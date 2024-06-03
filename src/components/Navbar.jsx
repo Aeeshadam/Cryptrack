@@ -5,9 +5,9 @@ import Button from "./Button";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center container ">
+    <div className="navbar  ">
       <Logo />
-      <div className="flex items-center gap-8 lg:justify-between lg:w-3/5 ">
+      <div className="flex items-center gap-8 justify-end md:justify-between  w-2/3 ">
         <div className=" md:hidden">
           <SearchIcon />
         </div>

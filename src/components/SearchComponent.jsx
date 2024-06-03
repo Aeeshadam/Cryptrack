@@ -2,7 +2,7 @@ import SearchIcon from "./SearchIcon";
 
 const SearchComponent = () => {
   return (
-    <div className="flex justify-center border border-darkprimary  items-center p-4 gap-3 w-full max-md:w-full">
+    <div className="flex justify-center border border-darkprimary max-w-3xl items-center p-4 gap-3 w-full max-md:w-full">
       <SearchIcon />
       <input
         type="text"
