@@ -1,0 +1,51 @@
+@import url("https://fonts.googleapis.com/css2?family=Arbutus&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.6rem;
+}
+
+p {
+  font-size: 1.6rem;
+  color: #a7a7a7;
+}
+
+h1 {
+  font-family: "Arbutus", serif;
+  font-weight: 800;
+  font-size: 3rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 6.4rem;
+  }
+}
+
+h2 {
+  font-size: 2.4rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 4.8rem;
+  }
+}
+
+h3 {
+  font-size: 2rem;
+
+  @media screen and (min-width: 768px) {
+    font-size: 3.2rem;
+  }
+}
