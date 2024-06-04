@@ -24,7 +24,7 @@
   --color-red-bg: rgba(212, 21, 21, 0.14);
   --color-brightprimary: #d8a353;
   --color-darkprimary: #685f4c;
-  --color-grey: #a7a7a7;
+  --color-grey: rgb(167, 167, 167);
   --color-lightgrey: #c5c5c5;
   --color-white: #ffffff;
 }
