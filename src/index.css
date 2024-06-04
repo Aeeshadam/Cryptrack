@@ -2,6 +2,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+  tr td {
+    @apply p-3 font-medium text-white;
+  }
+  thead tr td {
+    @apply py-6 font-medium text-grey;
+  }
+
+  tbody tr {
+    @apply hover:bg-opacity-30;
+  }
+}
 
 :root {
   --color-dark: rgb(10, 9, 8);
@@ -127,4 +139,8 @@ h3 {
   @media screen and (min-width: 768px) {
     padding: 2rem 4rem;
   }
+}
+
+td {
+  font-size: 1.4rem;
 }
