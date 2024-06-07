@@ -11,7 +11,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/token/:id" element={<TokenDetails />} />
+        <Route path="/token" element={<TokenDetails />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
