@@ -14,7 +14,7 @@ const Navbar = () => {
         <div className="w-3/5 hidden md:block">
           <SearchComponent />
         </div>
-        <Button>Get Started</Button>
+        <Button>Start portfolio</Button>
       </div>
     </nav>
   );
