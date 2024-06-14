@@ -16,7 +16,7 @@ const Navbar = () => {
         </div>
         <Button>Get Started</Button>
       </div>
-    </div>
+    </nav>
   );
 };
 export default Navbar;
