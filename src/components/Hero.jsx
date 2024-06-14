@@ -1,5 +1,5 @@
 import Button from "./Button";
-import HeroSvg from "../assets/Hero.svg";
+import HeroPng from "../assets/Hero.png";
 import MainChains from "./MainChains";
 const Hero = () => {
   return (
@@ -15,7 +15,7 @@ const Hero = () => {
           <Button>Create Portfolio</Button>
         </div>
         <div className="mt-12 mx-auto flex items-center justify-center  h-full max-w-3xl md:mt-0 ">
-          <img src={HeroSvg} alt="hero" className="object-contain " />
+          <img src={HeroPng} alt="hero" className="object-contain " />
         </div>
       </div>
       <div className="container hidden md:block ">
