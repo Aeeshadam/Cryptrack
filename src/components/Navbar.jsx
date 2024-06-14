@@ -5,7 +5,7 @@ import Button from "./Button";
 
 const Navbar = () => {
   return (
-    <div className="navbar  ">
+    <nav className="navbar  ">
       <Logo />
       <div className="flex items-center gap-8 justify-end md:justify-between  w-2/3 ">
         <div className=" md:hidden">
@@ -16,7 +16,7 @@ const Navbar = () => {
         </div>
         <Button>Get Started</Button>
       </div>
-    </div>
+    </nav>
   );
 };
 export default Navbar;
