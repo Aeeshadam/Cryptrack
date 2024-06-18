@@ -4,14 +4,14 @@
 @tailwind utilities;
 @layer base {
   tr td {
-    @apply p-3 font-medium text-white;
+    @apply px-6 py-3 font-medium text-white;
   }
-  thead tr td {
-    @apply py-6 font-medium text-grey;
+  thead tr th {
+    @apply p-6 font-medium text-grey text-left text-xl;
   }
 
   tbody tr {
-    @apply hover:bg-opacity-30;
+    @apply hover:bg-opacity-30 px-40;
   }
 }
 

@@ -26,14 +26,14 @@ const TableHead = () => {
   return (
     <thead className="border-b border-darkprimary border-opacity-35">
       <tr className="m-6">
-        <td>#</td>
-        <td>Crypto</td>
-        <td>Prices</td>
-        <td>
+        <th>#</th>
+        <th>Crypto</th>
+        <th>Prices</th>
+        <th>
           24h <span className="hidden md:inline">Change</span>
-        </td>
-        <td className="hidden md:table-cell">Market Cap</td>
-        <td>Holdings</td>
+        </th>
+        <th className="hidden md:table-cell">Market Cap</th>
+        <th>Holdings</th>
       </tr>
     </thead>
   );
@@ -60,9 +60,11 @@ const TableRow = () => {
   return (
     <tr className="bg-midnight ease-in-out hover:duration-700 hover:bg-dark hover:cursor-pointer">
       <td>1</td>
-      <td className=" pl-4 flex items-start justify-start gap-2 flex-col md:flex-row md:items-center md:pl-0">
-        <img src={BnbSvg} alt="Bnb" className="w-8 md:w-12" />
-        BNB
+      <td className=" ">
+        <div className="flex items-start justify-start gap-2 flex-col md:flex-row  md:pl-0">
+          <img src={BnbSvg} alt="Bnb" className="w-8 md:w-12" />
+          BNB
+        </div>
       </td>
       <td>$53,000.00</td>
       <td>
@@ -80,12 +82,14 @@ const TableRow = () => {
         <div className="flex items-center gap-4">
           <img
             src={PlusIcon}
-            alt="plus"
+            alt="add button"
+            role="button"
             className="w-6 cursor-pointer hover:w-8 hover:duration-500 ease-in-out"
           />
           <img
             src={CancelIcon}
-            alt="cancel"
+            alt="cancel button"
+            role="button"
             className="w-6 cursor-pointer ease-in-out hover:w-8 hover:duration-500"
           />
         </div>

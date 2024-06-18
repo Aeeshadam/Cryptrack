@@ -4,7 +4,7 @@ import YoutubeSvg from "../assets/youtube.svg";
 
 const Footer = () => {
   return (
-    <section className="container ">
+    <footer className="container ">
       <div className="flex flex-col items-center gap-12 pt-24">
         <div className="flex gap-4 justify-center">
           <div className="bg-midnight p-8 flex rounded-full">
@@ -22,7 +22,7 @@ const Footer = () => {
           © 2022 Cryptrack. All rights reserved.
         </div>
       </div>
-    </section>
+    </footer>
   );
 };
 export default Footer;
