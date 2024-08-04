@@ -1,5 +1,5 @@
-import Hero from "@/components/Hero";
-import CryptoPricesSection from "@/components/CryptoPricesSection";
+import Hero from "./Hero";
+import CryptoPricesSection from "./CryptoPricesSection";
 
 export default function Home() {
   return (

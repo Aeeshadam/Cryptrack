@@ -1,13 +1,10 @@
 "use client";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { SummaryCardsContainer } from "./styles";
 import { SummaryContentContainer } from "./styles";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import ChipButton from "../ChipButton";
+import ChipButton from "@/components/ChipButton";
 
 const CardData = [
   {

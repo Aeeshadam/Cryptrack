@@ -9,7 +9,7 @@ import {
   HeroImageContainer,
 } from "./styles";
 import { Typography } from "@mui/material";
-import { StyledButton } from "../StyledButton";
+import { StyledButton } from "@/components/StyledButton";
 import CommonCoins from "./CommonCoins";
 
 const Hero = () => {

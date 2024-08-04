@@ -36,126 +36,38 @@ export default function CryptoTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          <TableRow
-            sx={{
-              "&:last-child td, &:last-child th": { border: 0 },
-              cursor: "pointer",
-              "&:hover": {
-                backgroundColor: "secondary.dark",
-              },
-            }}
-          >
-            <TableCell component="th" scope="row">
-              1
-            </TableCell>
-            <TableCell align="left">
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="flex-st"
-                gap="6px"
-              >
-                <Image src="/Bnb.svg" alt="bitcoin" width={24} height={24} />
-                <Typography variant="h6">BNB</Typography>
-              </Box>
-            </TableCell>
-            <TableCell align="right">$53,000</TableCell>
-            <TableCell align="right">
-              <ChipButton change={0.51} />
-            </TableCell>
-            <HiddenCellOnMobile align="right">$25,000,000</HiddenCellOnMobile>
-            <HiddenCellOnMobile align="right">$5,000,00</HiddenCellOnMobile>
-          </TableRow>
-          <TableRow
-            sx={{
-              "&:last-child td, &:last-child th": { border: 0 },
-              cursor: "pointer",
-              "&:hover": {
-                backgroundColor: "secondary.dark",
-              },
-            }}
-          >
-            <TableCell component="th" scope="row">
-              1
-            </TableCell>
-            <TableCell align="left">
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="flex-st"
-                gap="6px"
-              >
-                <Image src="/Bnb.svg" alt="bitcoin" width={24} height={24} />
-                <Typography variant="h6">BNB</Typography>
-              </Box>
-            </TableCell>
-            <TableCell align="right">$53,000</TableCell>
-            <TableCell align="right">
-              <ChipButton change={1.59} />
-            </TableCell>
-            <HiddenCellOnMobile align="right">$25,000,000</HiddenCellOnMobile>
-            <HiddenCellOnMobile align="right">$5,000,00</HiddenCellOnMobile>
-          </TableRow>
-          <TableRow
-            sx={{
-              "&:last-child td, &:last-child th": { border: 0 },
-              cursor: "pointer",
-              "&:hover": {
-                backgroundColor: "secondary.dark",
-              },
-            }}
-          >
-            <TableCell component="th" scope="row">
-              1
-            </TableCell>
-            <TableCell align="left">
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="flex-st"
-                gap="6px"
-              >
-                <Image src="/Bnb.svg" alt="bitcoin" width={24} height={24} />
-                <Typography variant="h6">BNB</Typography>
-              </Box>
-            </TableCell>
-            <TableCell align="right">$53,000</TableCell>
-            <TableCell align="right">
-              <ChipButton change={0.62} />
-            </TableCell>
-            <HiddenCellOnMobile align="right">$25,000,000</HiddenCellOnMobile>
-            <HiddenCellOnMobile align="right">$5,000,00</HiddenCellOnMobile>
-          </TableRow>
-          <TableRow
-            sx={{
-              "&:last-child td, &:last-child th": { border: 0 },
-              cursor: "pointer",
-              "&:hover": {
-                backgroundColor: "secondary.dark",
-              },
-            }}
-          >
-            <TableCell component="th" scope="row">
-              1
-            </TableCell>
-            <TableCell align="left">
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="flex-st"
-                gap="6px"
-              >
-                <Image src="/Bnb.svg" alt="bitcoin" width={24} height={24} />
-                <Typography variant="h6">BNB</Typography>
-              </Box>
-            </TableCell>
-            <TableCell align="right">$53,000</TableCell>
-            <TableCell align="right">
-              <ChipButton change={0.34} />
-            </TableCell>
-            <HiddenCellOnMobile align="right">$25,000,000</HiddenCellOnMobile>
-            <HiddenCellOnMobile align="right">$5,000,00</HiddenCellOnMobile>
-          </TableRow>
+          {Array.from({ length: 15 }, (_, index) => (
+            <TableRow
+              sx={{
+                "&:last-child td, &:last-child th": { border: 0 },
+                cursor: "pointer",
+                "&:hover": {
+                  backgroundColor: "secondary.dark",
+                },
+              }}
+            >
+              <TableCell component="th" scope="row">
+                1
+              </TableCell>
+              <TableCell align="left">
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="flex-st"
+                  gap="6px"
+                >
+                  <Image src="/Bnb.svg" alt="bitcoin" width={24} height={24} />
+                  <Typography variant="h6">BNB</Typography>
+                </Box>
+              </TableCell>
+              <TableCell align="right">$53,000</TableCell>
+              <TableCell align="right">
+                <ChipButton change={0.51} />
+              </TableCell>
+              <HiddenCellOnMobile align="right">$25,000,000</HiddenCellOnMobile>
+              <HiddenCellOnMobile align="right">$5,000,00</HiddenCellOnMobile>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </TableContainer>

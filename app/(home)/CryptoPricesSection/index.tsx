@@ -2,8 +2,8 @@ import { Typography } from "@mui/material";
 
 import Box from "@mui/material/Box";
 import SummaryCard from "./SummaryCard";
-import CryptoTable from "../CryptoTable";
-import Pagination from "../Pagination";
+import CryptoTable from "@/components/CryptoTable";
+import Pagination from "@/components/Pagination";
 
 const CryptoPricesSection = () => {
   return (

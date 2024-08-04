@@ -15,11 +15,7 @@ const ChipButton = ({ change }: { change: number }) => {
         },
       }}
     >
-      {isNegativeChange ? (
-        <KeyboardArrowDownIcon sx={{ mr: 1 }} />
-      ) : (
-        <KeyboardArrowUpIcon sx={{ mr: 1 }} />
-      )}
+      {isNegativeChange ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
 
       {change}
     </Button>
