@@ -5,14 +5,10 @@ import Image from "next/image";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { useSearch } from "../contexts/SearchContext";
 
 export default function SearchResult() {
-  const [open, setOpen] = React.useState(true);
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
-
+  const { filteredCoins } = useSearch();
   return (
     <List
       sx={{
@@ -25,18 +21,24 @@ export default function SearchResult() {
       aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader component="div" id="nested-list-subheader">
-          Trending Coins 🔥
+          Coin List 🔥
         </ListSubheader>
       }
     >
-      {Array.from({ length: 15 }, (_, index) => (
-        <ListItemButton key={index}>
+      {filteredCoins.map((coin) => (
+        <ListItemButton key={coin.id}>
           <ListItemIcon>
-            <Image src="/Bnb.svg" alt="bitcoin" width={24} height={24} />
+            <Image src={coin.image} alt={coin.name} width={30} height={30} />
           </ListItemIcon>
-          <ListItemText primary="BNB" />
+          <ListItemText primary={coin.name} />
         </ListItemButton>
       ))}
+
+      {filteredCoins.length === 0 && (
+        <ListItemButton>
+          <ListItemText primary="No result found" />
+        </ListItemButton>
+      )}
     </List>
   );
 }

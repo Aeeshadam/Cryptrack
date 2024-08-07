@@ -7,6 +7,8 @@ import Container from "@mui/material/Container";
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { SearchProvider } from "../contexts/SearchContext";
+import ClientProvider from "./ClientProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +26,15 @@ export default function RootLayout({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Container maxWidth="lg">
-              <Navbar />
-              {children}
-              <Footer />
-            </Container>
+            <ClientProvider>
+              <SearchProvider>
+                <Container maxWidth="lg">
+                  <Navbar />
+                  {children}
+                  <Footer />
+                </Container>
+              </SearchProvider>
+            </ClientProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

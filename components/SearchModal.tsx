@@ -1,5 +1,6 @@
+"use client";
+import React, { Suspense, lazy } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import SearchComponent from "./SearchComponent";
 import SearchResult from "./SearchResult";
@@ -38,7 +39,7 @@ export default function SearchModal({
       >
         <Box sx={style}>
           <SearchComponent editable={true} focus={true} mobileVersion={false} />
-          <SearchResult />
+          {/*<SearchResult />*/}
         </Box>
       </Modal>
     </div>

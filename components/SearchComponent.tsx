@@ -7,6 +7,7 @@ import {
   MobileSearchIconWrapper,
 } from "../styles/searchStyles";
 import { SearchComponentProps } from "@/types";
+import { useSearch } from "../contexts/SearchContext";
 
 const SearchComponent = ({
   setOpenSearch,
@@ -19,6 +20,8 @@ const SearchComponent = ({
       setOpenSearch(true);
     }
   };
+
+  const { searchQuery, setSearchQuery } = useSearch();
 
   return (
     <>
@@ -64,6 +67,10 @@ const SearchComponent = ({
             </SearchIconWrapper>
             <StyledInputBase
               readOnly={!editable}
+              value={searchQuery}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setSearchQuery(event.target.value)
+              }
               autoFocus={focus}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
