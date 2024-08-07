@@ -1,32 +1,15 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { CoinState, CoinProps } from "@/types";
+import { CoinState } from "@/types";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { CoinProps } from "@/types";
 
 export const fetchCoins = createAsyncThunk<CoinProps[]>(
   "coins/getAllCoins",
   async () => {
-    const allCoins: CoinProps[] = [];
-    const perPage = 200;
-    let page = 1;
-    let hasMore = true;
-
-    while (hasMore) {
-      const response = await fetch(
-        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=${perPage}&page=${page}`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch coins");
-      }
-      const data = await response.json();
-      console.log(data);
-      allCoins.push(...data);
-      if (page > 4) {
-        hasMore = false;
-      } else {
-        page++;
-      }
+    const response = await fetch("/api/coins");
+    if (!response.ok) {
+      throw new Error("Failed to fetch coins");
     }
-
-    return allCoins;
+    return response.json();
   }
 );
 
@@ -39,7 +22,11 @@ const initialState: CoinState = {
 const coinSlice = createSlice({
   name: "crypto",
   initialState,
-  reducers: {},
+  reducers: {
+    setCoins: (state, action: PayloadAction<CoinProps[]>) => {
+      state.coins = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchCoins.fulfilled, (state, action) => {
       state.loading = false;
@@ -48,7 +35,12 @@ const coinSlice = createSlice({
     builder.addCase(fetchCoins.pending, (state) => {
       state.loading = true;
     });
+    builder.addCase(fetchCoins.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || "Failed to fetch coins";
+    });
   },
 });
 
+export const { setCoins } = coinSlice.actions;
 export default coinSlice.reducer;

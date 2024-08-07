@@ -8,16 +8,25 @@ import { AppState } from "@/store/store";
 const SearchContext = createContext<SearchContextProps | undefined>(undefined);
 
 export const SearchProvider = ({ children }: { children: ReactNode }) => {
+  const [openSearch, setOpenSearch] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const coins = useSelector((state: AppState) => state.crypto.coins);
 
-  const filteredCoins = coins?.filter((coin) =>
-    coin.name.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredCoins = searchQuery
+    ? coins?.filter((coin) =>
+        coin.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : coins?.slice(0, 10);
 
   return (
     <SearchContext.Provider
-      value={{ searchQuery, setSearchQuery, filteredCoins }}
+      value={{
+        searchQuery,
+        setSearchQuery,
+        filteredCoins,
+        openSearch,
+        setOpenSearch,
+      }}
     >
       {children}
     </SearchContext.Provider>

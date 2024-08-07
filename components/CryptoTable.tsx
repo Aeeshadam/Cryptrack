@@ -1,9 +1,9 @@
+// components/CryptoTable.tsx
 "use client";
-import * as React from "react";
 import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppState, AppDispatch } from "../store/store";
-import { fetchCoins } from "../slice/coinSlice";
+import { fetchCoins, setCoins } from "../slice/coinSlice";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -17,7 +17,11 @@ import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import { CoinProps } from "../types/index";
 
-export default function CryptoTable() {
+type CryptoTableProps = {
+  initialData: CoinProps[];
+};
+
+export default function CryptoTable({ initialData }: CryptoTableProps) {
   const coinRef = useRef(false);
   const dispatch = useDispatch<AppDispatch>();
   const coins = useSelector((state: AppState) => state.crypto.coins);
@@ -27,12 +31,14 @@ export default function CryptoTable() {
 
   useEffect(() => {
     if (coinRef.current === false) {
-      dispatch(fetchCoins());
-    }
-    return () => {
+      if (initialData.length > 0) {
+        dispatch(setCoins(initialData));
+      } else {
+        dispatch(fetchCoins());
+      }
       coinRef.current = true;
-    };
-  }, [dispatch]);
+    }
+  }, [dispatch, initialData]);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentCoins = coins.slice(startIndex, startIndex + itemsPerPage);

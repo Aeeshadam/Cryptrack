@@ -10,19 +10,17 @@ import { SearchComponentProps } from "@/types";
 import { useSearch } from "../contexts/SearchContext";
 
 const SearchComponent = ({
-  setOpenSearch,
   mobileVersion = true,
   editable = false,
   focus = false,
 }: SearchComponentProps) => {
+  const { searchQuery, setSearchQuery, setOpenSearch } = useSearch();
+
   const handleOpenSearch = () => {
     if (setOpenSearch) {
       setOpenSearch(true);
     }
   };
-
-  const { searchQuery, setSearchQuery } = useSearch();
-
   return (
     <>
       <Box sx={{ flexGrow: 1 }} />

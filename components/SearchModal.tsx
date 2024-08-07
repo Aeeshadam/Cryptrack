@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import SearchComponent from "./SearchComponent";
 import SearchResult from "./SearchResult";
+import { useSearch } from "../contexts/SearchContext";
 
 const style = {
   position: "absolute" as "absolute",
@@ -22,24 +23,19 @@ const style = {
   p: 4,
 };
 
-export default function SearchModal({
-  setOpenSearch,
-  open,
-}: {
-  open: boolean;
-  setOpenSearch: (open: boolean) => void;
-}) {
+export default function SearchModal() {
+  const { openSearch, setOpenSearch } = useSearch();
   return (
     <div>
       <Modal
-        open={open}
+        open={openSearch}
         onClose={() => setOpenSearch(false)}
         aria-labelledby="modal-search"
         aria-describedby="modal-search input and result"
       >
         <Box sx={style}>
           <SearchComponent editable={true} focus={true} mobileVersion={false} />
-          {/*<SearchResult />*/}
+          <SearchResult />
         </Box>
       </Modal>
     </div>

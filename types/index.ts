@@ -49,4 +49,6 @@ export interface SearchContextProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
   filteredCoins: CoinProps[];
+  openSearch: boolean;
+  setOpenSearch: (open: boolean) => void;
 }
