@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "../styles/theme";
-import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { SearchProvider } from "../contexts/SearchContext";
-import ClientProvider from "./ClientProvider";
+import ContextsProviders from "@/contexts/ContextsProviders";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,20 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <ClientProvider>
-              <SearchProvider>
-                <Container maxWidth="lg">
-                  <Navbar />
-                  {children}
-                  <Footer />
-                </Container>
-              </SearchProvider>
-            </ClientProvider>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <ContextsProviders>
+          <Container maxWidth="lg">
+            <Navbar />
+            {children}
+            <Footer />
+          </Container>
+        </ContextsProviders>
       </body>
     </html>
   );

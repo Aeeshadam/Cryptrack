@@ -4,17 +4,10 @@ import { Typography } from "@mui/material";
 import SummaryCard from "./SummaryCard";
 import CryptoTable from "@/components/CryptoTable";
 import Pagination from "@/components/Pagination";
-import { CoinProps } from "@/types";
 import SearchModal from "@/components/SearchModal";
 import { useSearch } from "@/contexts/SearchContext";
 
-type CryptoPricesSectionProps = {
-  initialData: CoinProps[];
-};
-
-const CryptoPricesSection: React.FC<CryptoPricesSectionProps> = ({
-  initialData,
-}) => {
+const CryptoPricesSection: React.FC = () => {
   const { openSearch } = useSearch();
   return (
     <>
@@ -32,7 +25,7 @@ const CryptoPricesSection: React.FC<CryptoPricesSectionProps> = ({
             gap: "1rem",
           }}
         >
-          <CryptoTable initialData={initialData} />
+          <CryptoTable />
           <Pagination />
         </Box>
       </Box>

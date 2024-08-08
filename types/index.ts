@@ -52,3 +52,8 @@ export interface SearchContextProps {
   openSearch: boolean;
   setOpenSearch: (open: boolean) => void;
 }
+
+export interface InitialDataContextProps {
+  initialData: CoinProps[];
+  setInitialData: (data: CoinProps[]) => void;
+}
