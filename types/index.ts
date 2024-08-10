@@ -57,3 +57,31 @@ export interface InitialDataContextProps {
   initialData: CoinProps[];
   setInitialData: (data: CoinProps[]) => void;
 }
+
+interface CoinGeckoMarketData {
+  active_cryptocurrencies: number;
+  upcoming_icos: number;
+  ongoing_icos: number;
+  ended_icos: number;
+  markets: number;
+  market_cap_change_percentage_24h_usd: number;
+  total_market_cap: Record<string, number>;
+  total_volume: Record<string, number>;
+  market_cap_percentage: Record<string, number>;
+  updated_at: number;
+}
+
+export interface SummaryDataProps {
+  data: CoinGeckoMarketData;
+}
+
+export interface CardsDataProps {
+  title: string;
+  value: string;
+}
+export interface SummaryDataContextProps {
+  loading: boolean;
+  error: null | string;
+  cardsData: CardsDataProps[];
+  summaryData: SummaryDataProps;
+}

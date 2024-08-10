@@ -34,7 +34,7 @@ export const InitialDataProvider = ({ children }: { children: ReactNode }) => {
       }
     };
 
-    fetchData();
+    // fetchData();
   }, [dispatch]);
 
   return (

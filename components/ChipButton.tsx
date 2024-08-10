@@ -2,8 +2,8 @@ import Button from "@mui/material/Button";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-const ChipButton = ({ change }: { change: number }) => {
-  const isNegativeChange = change < 0;
+const ChipButton = ({ change }: { change: number | string }) => {
+  const isNegativeChange = Number(change) < 0;
   return (
     <Button
       size="small"

@@ -11,19 +11,23 @@ const fetchCryptoData = async () => {
   let hasMore = true;
 
   while (hasMore) {
-    const response = await axios.get(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=${perPage}&page=${page}`
-    );
+    const options = {
+      method: "GET",
+      url: `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=${perPage}&page=${page}`,
+      headers: {
+        accept: "application/json",
+        "x-cg-demo-api-key": "CG-Zn9GstsVcCfuiZNwvacRTZAC",
+      },
+    };
+    const response = await axios.request(options);
     const data = response.data;
     allCoins.push(...data);
-
-    if (page >= 5) {
+    if (page >= 6) {
       hasMore = false;
     } else {
       page++;
     }
   }
-
   return allCoins;
 };
 

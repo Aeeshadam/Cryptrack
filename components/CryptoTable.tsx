@@ -16,6 +16,7 @@ import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import { CoinProps } from "../types/index";
 import { useInitialData } from "@/contexts/InitialDataContext";
+import { formatCurrency, formatPercentage } from "@/utils";
 
 export default function CryptoTable() {
   const { initialData } = useInitialData();
@@ -99,14 +100,22 @@ export default function CryptoTable() {
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="subtitle1" fontWeight={600}>
-                      ${coin.current_price}
+                      {formatCurrency(coin.current_price)}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <ChipButton change={coin.price_change_percentage_24h} />
+                    <ChipButton
+                      change={formatPercentage(
+                        coin.price_change_percentage_24h
+                      )}
+                    />
                   </TableCell>
-                  <TableCell align="right">${coin.market_cap}</TableCell>
-                  <TableCell align="right">${coin.total_volume}</TableCell>
+                  <TableCell align="right">
+                    {formatCurrency(coin.market_cap)}
+                  </TableCell>
+                  <TableCell align="right">
+                    {formatCurrency(coin.total_volume)}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
