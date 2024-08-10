@@ -6,7 +6,6 @@ import CryptoTable from "@/components/CryptoTable";
 import Pagination from "@/components/Pagination";
 import SearchModal from "@/components/SearchModal";
 import { useSearch } from "@/contexts/SearchContext";
-import { SummaryDataProvider } from "@/contexts/SummaryDataContext";
 
 const CryptoPricesSection: React.FC = () => {
   const { openSearch } = useSearch();
@@ -17,9 +16,9 @@ const CryptoPricesSection: React.FC = () => {
         <Typography variant="h2">
           Today's Crypto Prices by Market Cap
         </Typography>
-        <SummaryDataProvider>
-          <SummaryCard />
-        </SummaryDataProvider>
+
+        <SummaryCard />
+
         <Box
           sx={{
             display: "flex",

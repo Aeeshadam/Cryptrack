@@ -4,7 +4,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/styles/theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { SearchProvider } from "./SearchContext";
-import { InitialDataProvider } from "./InitialDataContext";
 
 export default function ContextsProviders({
   children,
@@ -17,10 +16,9 @@ export default function ContextsProviders({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
+
             <ClientProvider>
-              <SearchProvider>
-                <InitialDataProvider>{children}</InitialDataProvider>
-              </SearchProvider>
+              <SearchProvider>{children}</SearchProvider>
             </ClientProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>

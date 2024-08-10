@@ -1,4 +1,4 @@
-"use client";
+/* "use client";
 
 import {
   createContext,
@@ -34,7 +34,7 @@ export const InitialDataProvider = ({ children }: { children: ReactNode }) => {
       }
     };
 
-    // fetchData();
+    fetchData();
   }, [dispatch]);
 
   return (
@@ -54,4 +54,4 @@ export const useInitialData = () => {
   return context;
 };
 
-export default InitialDataContext;
+export default InitialDataContext; */

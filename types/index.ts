@@ -51,6 +51,7 @@ export interface SearchContextProps {
   filteredCoins: CoinProps[];
   openSearch: boolean;
   setOpenSearch: (open: boolean) => void;
+  handleOpenSearch: () => void;
 }
 
 export interface InitialDataContextProps {

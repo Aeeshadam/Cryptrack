@@ -1,23 +1,14 @@
 "use client";
 
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  ReactNode,
-} from "react";
-import { SummaryDataContextProps, SummaryDataProps } from "@/types";
+import { useState, useEffect } from "react";
+import { SummaryDataProps } from "@/types";
 import { formatCurrency, formatPercentage } from "@/utils";
 
-const SummaryDataContext = createContext<SummaryDataContextProps | undefined>(
-  undefined
-);
-
-export const SummaryDataProvider = ({ children }: { children: ReactNode }) => {
+export const useSummaryData = () => {
   const [summaryData, setSummaryData] = useState({} as SummaryDataProps);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null as string | null);
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,6 +19,7 @@ export const SummaryDataProvider = ({ children }: { children: ReactNode }) => {
         const data: SummaryDataProps = await response.json();
         setSummaryData(data);
       } catch (error) {
+        setError("Failed to fetch summary data");
         console.error("Failed to fetch summary data:", error);
       } finally {
         setLoading(false);
@@ -56,21 +48,10 @@ export const SummaryDataProvider = ({ children }: { children: ReactNode }) => {
     },
   ];
 
-  return (
-    <SummaryDataContext.Provider
-      value={{ summaryData, loading, error, cardsData }}
-    >
-      {children}
-    </SummaryDataContext.Provider>
-  );
-};
-
-export const useSummaryData = () => {
-  const context = useContext(SummaryDataContext);
-
-  if (!context) {
-    throw new Error("useSummaryData must be used within a SummaryDataProvider");
-  }
-
-  return context;
+  return {
+    summaryData,
+    loading,
+    error,
+    cardsData,
+  };
 };

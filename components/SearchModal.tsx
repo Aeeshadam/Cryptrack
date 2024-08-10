@@ -1,12 +1,12 @@
 "use client";
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import SearchComponent from "./SearchComponent";
 import SearchResult from "./SearchResult";
-import { useSearch } from "../contexts/SearchContext";
-
+import { useSearch } from "@/contexts/SearchContext";
 const style = {
+  zIndex: 9999,
   position: "absolute" as "absolute",
   top: "50%",
   left: "50%",

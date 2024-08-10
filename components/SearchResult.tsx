@@ -5,7 +5,7 @@ import Image from "next/image";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import { useSearch } from "../contexts/SearchContext";
+import { useSearch } from "@/contexts/SearchContext";
 
 export default function SearchResult() {
   const { filteredCoins } = useSearch();

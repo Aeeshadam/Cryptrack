@@ -18,6 +18,9 @@ export const SearchProvider = ({ children }: { children: ReactNode }) => {
       )
     : coins?.slice(0, 10);
 
+  const handleOpenSearch = () => {
+    setOpenSearch(true);
+  };
   return (
     <SearchContext.Provider
       value={{
@@ -26,6 +29,7 @@ export const SearchProvider = ({ children }: { children: ReactNode }) => {
         filteredCoins,
         openSearch,
         setOpenSearch,
+        handleOpenSearch,
       }}
     >
       {children}

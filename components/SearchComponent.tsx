@@ -7,20 +7,17 @@ import {
   MobileSearchIconWrapper,
 } from "../styles/searchStyles";
 import { SearchComponentProps } from "@/types";
-import { useSearch } from "../contexts/SearchContext";
+import { useSearch } from "@/contexts/SearchContext";
+import { useState } from "react";
+import SearchModal from "./SearchModal";
 
 const SearchComponent = ({
   mobileVersion = true,
   editable = false,
   focus = false,
 }: SearchComponentProps) => {
-  const { searchQuery, setSearchQuery, setOpenSearch } = useSearch();
+  const { searchQuery, setSearchQuery, handleOpenSearch } = useSearch();
 
-  const handleOpenSearch = () => {
-    if (setOpenSearch) {
-      setOpenSearch(true);
-    }
-  };
   return (
     <>
       <Box sx={{ flexGrow: 1 }} />
@@ -59,7 +56,7 @@ const SearchComponent = ({
         </>
       ) : (
         <Box sx={{ display: "block" }}>
-          <Search onClick={handleOpenSearch}>
+          <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
