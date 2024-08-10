@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, AppState } from "../store/store";
-import { fetchCoins, setCoins } from "../slice/coinSlice";
+import { fetchCoins } from "../slice/coinSlice";
 
 export const useCoinsData = () => {
   const dispatch = useDispatch<AppDispatch>();

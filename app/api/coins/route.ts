@@ -22,7 +22,7 @@ const fetchCryptoData = async () => {
     const response = await axios.request(options);
     const data = response.data;
     allCoins.push(...data);
-    if (page >= 6) {
+    if (page >= 10) {
       hasMore = false;
     } else {
       page++;

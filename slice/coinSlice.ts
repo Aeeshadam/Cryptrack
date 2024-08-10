@@ -1,5 +1,5 @@
 import { CoinState, CoinProps } from "@/types";
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchCoins = createAsyncThunk<CoinProps[]>(
   "coins/getAllCoins",
@@ -21,11 +21,7 @@ const initialState: CoinState = {
 const coinSlice = createSlice({
   name: "crypto",
   initialState,
-  reducers: {
-    setCoins: (state, action: PayloadAction<CoinProps[]>) => {
-      state.coins = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCoins.fulfilled, (state, action) => {
       state.loading = false;
@@ -41,5 +37,4 @@ const coinSlice = createSlice({
   },
 });
 
-export const { setCoins } = coinSlice.actions;
 export default coinSlice.reducer;

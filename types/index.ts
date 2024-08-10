@@ -54,11 +54,6 @@ export interface SearchContextProps {
   handleOpenSearch: () => void;
 }
 
-export interface InitialDataContextProps {
-  initialData: CoinProps[];
-  setInitialData: (data: CoinProps[]) => void;
-}
-
 interface CoinGeckoMarketData {
   active_cryptocurrencies: number;
   upcoming_icos: number;
@@ -75,14 +70,7 @@ interface CoinGeckoMarketData {
 export interface SummaryDataProps {
   data: CoinGeckoMarketData;
 }
-
 export interface CardsDataProps {
   title: string;
   value: string;
-}
-export interface SummaryDataContextProps {
-  loading: boolean;
-  error: null | string;
-  cardsData: CardsDataProps[];
-  summaryData: SummaryDataProps;
 }

@@ -16,7 +16,6 @@ export default function ContextsProviders({
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-
             <ClientProvider>
               <SearchProvider>{children}</SearchProvider>
             </ClientProvider>
