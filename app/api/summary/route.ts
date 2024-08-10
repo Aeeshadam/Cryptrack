@@ -10,7 +10,7 @@ const options = {
   url: "https://api.coingecko.com/api/v3/global",
   headers: {
     accept: "application/json",
-    "x-cg-demo-api-key": "CG-Zn9GstsVcCfuiZNwvacRTZAC",
+    "x-cg-demo-api-key": process.env.COINGECKO_API_KEY,
   },
 };
 

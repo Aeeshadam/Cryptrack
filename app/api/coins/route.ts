@@ -16,7 +16,7 @@ const fetchCryptoData = async () => {
       url: `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=${perPage}&page=${page}`,
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": "CG-Zn9GstsVcCfuiZNwvacRTZAC",
+        "x-cg-demo-api-key": process.env.COINGECKO_API_KEY,
       },
     };
     const response = await axios.request(options);
