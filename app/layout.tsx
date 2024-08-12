@@ -4,6 +4,7 @@ import "../styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ContextsProviders from "@/contexts/ContextsProviders";
+import ModalWrapper from "../components/ModalWrapper";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,11 +20,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ContextsProviders>
-          <Container maxWidth="lg">
-            <Navbar />
-            {children}
-            <Footer />
-          </Container>
+          <ModalWrapper>
+            <Container maxWidth="lg">
+              <Navbar />
+              {children}
+              <Footer />
+            </Container>
+          </ModalWrapper>
         </ContextsProviders>
       </body>
     </html>

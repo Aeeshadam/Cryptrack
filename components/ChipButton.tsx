@@ -1,23 +1,37 @@
 import Button from "@mui/material/Button";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Typography } from "@mui/material";
+import { formatPercentage } from "@/utils";
 
-const ChipButton = ({ change }: { change: number | string }) => {
+const ChipButton = ({
+  change,
+  detailPage,
+}: {
+  change: number;
+  detailPage?: boolean;
+}) => {
   const isNegativeChange = Number(change) < 0;
   return (
     <Button
-      size="small"
       sx={{
-        backgroundColor: isNegativeChange ? "error.dark" : "success.dark",
+        padding: 0,
         color: isNegativeChange ? "error.main" : "success.main",
         "&:hover": {
-          backgroundColor: isNegativeChange ? "error.dark" : "success.dark",
+          backgroundColor: "transparent",
+          cursor: "default",
         },
       }}
     >
       {isNegativeChange ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
-
-      {change}
+      <Typography
+        sx={{
+          fontSize: detailPage ? "20px" : "14px",
+          fontWeight: detailPage ? "500" : "400",
+        }}
+      >
+        {formatPercentage(change)}
+      </Typography>
     </Button>
   );
 };

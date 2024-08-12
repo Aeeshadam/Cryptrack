@@ -1,7 +1,7 @@
-import { CoinState, CoinProps } from "@/types";
+import { CoinListState, CoinListProps } from "@/types";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-export const fetchCoins = createAsyncThunk<CoinProps[]>(
+export const fetchCoins = createAsyncThunk<CoinListProps[]>(
   "coins/getAllCoins",
   async () => {
     const response = await fetch("/api/coins");
@@ -12,14 +12,14 @@ export const fetchCoins = createAsyncThunk<CoinProps[]>(
   }
 );
 
-const initialState: CoinState = {
+const initialState: CoinListState = {
   coins: [],
   loading: false,
   error: null,
 };
 
-const coinSlice = createSlice({
-  name: "crypto",
+const coinListSlice = createSlice({
+  name: "coinList",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -37,4 +37,4 @@ const coinSlice = createSlice({
   },
 });
 
-export default coinSlice.reducer;
+export default coinListSlice.reducer;

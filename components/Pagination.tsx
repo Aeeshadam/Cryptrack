@@ -8,7 +8,7 @@ import { setCurrentPage } from "../slice/paginationSlice";
 
 export default function PaginationRounded() {
   const dispatch = useDispatch<AppDispatch>();
-  const coins = useSelector((state: AppState) => state.crypto.coins);
+  const coins = useSelector((state: AppState) => state.coinList.coins);
   const { currentPage, itemsPerPage } = useSelector(
     (state: AppState) => state.pagination
   );

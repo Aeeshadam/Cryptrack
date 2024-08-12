@@ -1,7 +1,8 @@
 export const formatCurrency = (value: number) => {
-  return `$${value?.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,")}`;
+  const tofixedvalue = value >= 1 ? value?.toFixed(2) : value?.toFixed(6);
+  return `$${tofixedvalue?.replace(/\d(?=(\d{3})+\.)/g, "$&,")}`;
 };
 
 export const formatPercentage = (value: number) => {
-  return `${value?.toFixed(2)}%`;
+  return `${Math.abs(value).toFixed(2)}%`;
 };

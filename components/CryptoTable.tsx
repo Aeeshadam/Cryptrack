@@ -5,15 +5,20 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useRouter } from "next/navigation";
 import ChipButton from "./ChipButton";
 import Image from "next/image";
 import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
-import { CoinProps } from "../types/index";
+import { CoinListProps } from "../types/index";
 import { useCoinsData } from "@/hooks/useCoinsData";
-import { formatCurrency, formatPercentage } from "@/utils";
+import { formatCurrency } from "@/utils";
 
 export default function CryptoTable() {
+  const router = useRouter();
+  const handleRowClick = (coinId: string) => {
+    router.push(`/coin/${coinId}`);
+  };
   const { currentCoins, loading, error } = useCoinsData();
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -38,9 +43,10 @@ export default function CryptoTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {currentCoins.map((coin: CoinProps) => (
+          {currentCoins.map((coin: CoinListProps) => (
             <TableRow
               key={coin.id}
+              onClick={() => handleRowClick(coin.id)}
               sx={{
                 "&:last-child td, &:last-child th": { border: 0 },
                 cursor: "pointer",
@@ -76,9 +82,7 @@ export default function CryptoTable() {
                 </Typography>
               </TableCell>
               <TableCell align="right">
-                <ChipButton
-                  change={formatPercentage(coin.price_change_percentage_24h)}
-                />
+                <ChipButton change={coin.price_change_percentage_24h} />
               </TableCell>
               <TableCell align="right">
                 {formatCurrency(coin.market_cap)}

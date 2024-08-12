@@ -5,7 +5,7 @@ export interface SearchComponentProps {
   focus?: boolean;
 }
 
-export interface CoinProps {
+export interface CoinListProps {
   ath: number;
   ath_change_percentage: number;
   ath_date: string;
@@ -34,8 +34,8 @@ export interface CoinProps {
   total_volume: number;
 }
 
-export interface CoinState {
-  coins: CoinProps[];
+export interface CoinListState {
+  coins: CoinListProps[];
   loading: boolean;
   error: null | string;
 }
@@ -48,7 +48,7 @@ export interface PaginationState {
 export interface SearchContextProps {
   searchQuery: string;
   setSearchQuery: (query: string) => void;
-  filteredCoins: CoinProps[];
+  filteredCoins: CoinListProps[];
   openSearch: boolean;
   setOpenSearch: (open: boolean) => void;
   handleOpenSearch: () => void;
@@ -73,4 +73,18 @@ export interface SummaryDataProps {
 export interface CardsDataProps {
   title: string;
   value: string;
+}
+
+export interface ParamsProps {
+  slug: string;
+}
+
+export interface CoinDetailsProps {
+  coin: any;
+}
+
+export interface CoinDetailsState {
+  coin: any | null;
+  loading: boolean;
+  error: null | string;
 }

@@ -4,10 +4,9 @@ import Typography from "@mui/material/Typography";
 import { SummaryCardsContainer } from "./styles";
 import { SummaryContentContainer } from "./styles";
 import { useSummaryData } from "@/hooks/useSummaryData";
-import { SummaryDataContextProps } from "@/types";
 
 export default function SummaryCard() {
-  const { cardsData, loading } = useSummaryData() as SummaryDataContextProps;
+  const { cardsData, loading } = useSummaryData();
 
   if (loading) {
     return <p>Loading...</p>;

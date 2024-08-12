@@ -1,12 +1,12 @@
 import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, AppState } from "../store/store";
-import { fetchCoins } from "../slice/coinSlice";
+import { fetchCoins } from "../slice/coinListSlice";
 
 export const useCoinsData = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { coins, loading, error } = useSelector(
-    (state: AppState) => state.crypto
+    (state: AppState) => state.coinList
   );
   const { currentPage, itemsPerPage } = useSelector(
     (state: AppState) => state.pagination

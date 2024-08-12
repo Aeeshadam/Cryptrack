@@ -11,17 +11,13 @@ export default function ContextsProviders({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <ClientProvider>
-              <SearchProvider>{children}</SearchProvider>
-            </ClientProvider>
-          </ThemeProvider>
-        </AppRouterCacheProvider>
-      </body>
-    </html>
+    <AppRouterCacheProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <ClientProvider>
+          <SearchProvider>{children}</SearchProvider>
+        </ClientProvider>
+      </ThemeProvider>
+    </AppRouterCacheProvider>
   );
 }

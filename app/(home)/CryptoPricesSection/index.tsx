@@ -4,14 +4,10 @@ import { Typography } from "@mui/material";
 import SummaryCard from "./SummaryCard";
 import CryptoTable from "@/components/CryptoTable";
 import Pagination from "@/components/Pagination";
-import SearchModal from "@/components/SearchModal";
-import { useSearch } from "@/contexts/SearchContext";
 
 const CryptoPricesSection: React.FC = () => {
-  const { openSearch } = useSearch();
   return (
     <>
-      {openSearch && <SearchModal />}
       <Box marginY="3rem">
         <Typography variant="h2">
           Today's Crypto Prices by Market Cap

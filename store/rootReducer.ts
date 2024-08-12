@@ -1,10 +1,12 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import cryptoReducer from "../slice/coinSlice";
-import paginationSlice from "@/slice/paginationSlice";
+import coinListReducer from "../slice/coinListSlice";
+import paginationReducer from "@/slice/paginationSlice";
+import coinDetailsReducer from "@/slice/coinDetailsSlice";
 
 const rootReducer = combineReducers({
-  crypto: cryptoReducer,
-  pagination: paginationSlice,
+  coinList: coinListReducer,
+  pagination: paginationReducer,
+  coinDetails: coinDetailsReducer,
 });
 
 export default rootReducer;
