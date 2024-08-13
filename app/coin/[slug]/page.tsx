@@ -9,6 +9,7 @@ import { ParamsProps } from "@/types";
 import { useEffect } from "react";
 import MarketStats from "@/components/MarketStats";
 import About from "@/components/Navbar/About";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 const CoinDetailPage = ({ params }: { params: ParamsProps }) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -23,7 +24,7 @@ const CoinDetailPage = ({ params }: { params: ParamsProps }) => {
   }, [params.slug]);
 
   if (loading) {
-    return <Box>Loading...</Box>;
+    return <LoadingSpinner />;
   }
 
   if (error) {

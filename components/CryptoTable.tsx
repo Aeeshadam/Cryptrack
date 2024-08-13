@@ -13,6 +13,7 @@ import { Typography } from "@mui/material";
 import { CoinListProps } from "../types/index";
 import { useCoinsData } from "@/hooks/useCoinsData";
 import { formatCurrency } from "@/utils";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function CryptoTable() {
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function CryptoTable() {
     router.push(`/coin/${coinId}`);
   };
   const { currentCoins, loading, error } = useCoinsData();
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingSpinner />;
   if (error) return <p>Error: {error}</p>;
   return (
     <TableContainer

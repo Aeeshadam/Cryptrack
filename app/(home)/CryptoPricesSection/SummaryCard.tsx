@@ -4,12 +4,12 @@ import Typography from "@mui/material/Typography";
 import { SummaryCardsContainer } from "./styles";
 import { SummaryContentContainer } from "./styles";
 import { useSummaryData } from "@/hooks/useSummaryData";
-
+import LoadingSpinner from "@/components/LoadingSpinner";
 export default function SummaryCard() {
   const { cardsData, loading } = useSummaryData();
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner />;
   }
   return (
     <SummaryCardsContainer marginY="2rem">
