@@ -1,5 +1,4 @@
 import ClientProvider from "./StoreProvider";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/styles/theme";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -11,13 +10,11 @@ export default function ContextsProviders({
   children: React.ReactNode;
 }>) {
   return (
-    <AppRouterCacheProvider>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <ClientProvider>
-          <SearchProvider>{children}</SearchProvider>
-        </ClientProvider>
-      </ThemeProvider>
-    </AppRouterCacheProvider>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <ClientProvider>
+        <SearchProvider>{children}</SearchProvider>
+      </ClientProvider>
+    </ThemeProvider>
   );
 }
