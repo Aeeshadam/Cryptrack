@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { SummaryDataProps } from "@/types";
 import { formatCurrency, formatPercentage } from "@/utils/utils";
 

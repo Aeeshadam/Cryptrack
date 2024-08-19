@@ -1,7 +1,11 @@
 import React from "react";
 import { screen } from "@testing-library/react";
 import CoinDetail from "@/components/CoinDetail";
+<<<<<<< HEAD
 import { renderWithRedux } from "../utils/test-util";
+=======
+import { renderWithRedux } from "@/utils/test-util";
+>>>>>>> reset-testing
 import { AppState } from "@/store/store";
 
 describe("CoinDetail Component", () => {
