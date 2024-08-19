@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import Image from "next/image";
 import {
   HeroContainer,
@@ -7,7 +7,7 @@ import {
   HeroSpan,
   HeroBox,
   HeroImageContainer,
-} from "./styles";
+} from "../styles/HeroStyles";
 import { Typography } from "@mui/material";
 import { StyledButton } from "@/components/StyledButton";
 import CommonCoins from "./CommonCoins";

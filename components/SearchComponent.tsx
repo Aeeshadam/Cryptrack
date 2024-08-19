@@ -1,3 +1,4 @@
+import React from "react";
 import Box from "@mui/material/Box";
 import SearchIcon from "@mui/icons-material/Search";
 import {
@@ -5,11 +6,9 @@ import {
   SearchIconWrapper,
   StyledInputBase,
   MobileSearchIconWrapper,
-} from "../styles/searchStyles";
+} from "../styles/SearchComponentStyles";
 import { SearchComponentProps } from "@/types";
 import { useSearch } from "@/contexts/SearchContext";
-import { useState } from "react";
-import SearchModal from "./SearchModal";
 
 const SearchComponent = ({
   mobileVersion = true,

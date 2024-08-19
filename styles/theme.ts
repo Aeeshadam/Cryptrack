@@ -3,7 +3,7 @@
 import { Arbutus, Montserrat } from "next/font/google";
 import { createTheme } from "@mui/material/styles";
 
-const roboto = Arbutus({
+const arbutus = Arbutus({
   subsets: ["latin"],
   weight: ["400"],
   display: "swap",
@@ -52,7 +52,7 @@ const theme = createTheme({
   typography: {
     fontFamily: montserrat.style.fontFamily,
     h1: {
-      fontFamily: roboto.style.fontFamily,
+      fontFamily: arbutus.style.fontFamily,
       fontSize: "2.8rem",
       textAlign: "center",
       lineHeight: "3.7rem",

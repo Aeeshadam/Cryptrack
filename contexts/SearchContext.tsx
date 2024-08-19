@@ -1,5 +1,5 @@
 "use client";
-
+import React from "react";
 import { createContext, useContext, useState, ReactNode } from "react";
 import { SearchContextProps } from "@/types";
 import { useSelector } from "react-redux";

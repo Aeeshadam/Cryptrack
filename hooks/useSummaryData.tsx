@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { SummaryDataProps } from "@/types";
-import { formatCurrency, formatPercentage } from "@/utils";
+import { formatCurrency, formatPercentage } from "@/utils/utils";
 
 export const useSummaryData = () => {
   const [summaryData, setSummaryData] = useState({} as SummaryDataProps);

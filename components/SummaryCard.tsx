@@ -1,8 +1,9 @@
+import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { SummaryCardsContainer } from "./styles";
-import { SummaryContentContainer } from "./styles";
+import { SummaryCardsContainer } from "../styles/SummaryCardStyles";
+import { SummaryContentContainer } from "../styles/SummaryCardStyles";
 import { useSummaryData } from "@/hooks/useSummaryData";
 import LoadingSpinner from "@/components/LoadingSpinner";
 export default function SummaryCard() {

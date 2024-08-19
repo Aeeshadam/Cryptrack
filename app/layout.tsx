@@ -1,3 +1,4 @@
+import React from "react";
 import type { Metadata } from "next";
 import Container from "@mui/material/Container";
 import "../styles/globals.css";
@@ -20,13 +21,11 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ContextsProviders>
-          <ModalWrapper>
-            <Container maxWidth="lg">
-              <Navbar />
-              {children}
-              <Footer />
-            </Container>
-          </ModalWrapper>
+          <Container maxWidth="lg">
+            <Navbar />
+            {children}
+            <Footer />
+          </Container>
         </ContextsProviders>
       </body>
     </html>

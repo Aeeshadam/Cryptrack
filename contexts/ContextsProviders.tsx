@@ -1,3 +1,4 @@
+import React from "react";
 import ClientProvider from "./StoreProvider";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/styles/theme";
