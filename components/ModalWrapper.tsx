@@ -1,4 +1,5 @@
 "use client";
+
 import React, { ReactNode } from "react";
 import SearchModal from "@/components/SearchModal";
 import { useSearch } from "../contexts/SearchContext";

@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import Box from "@mui/material/Box";
 import Logo from "../Logo";
 import SearchComponent from "../SearchComponent";

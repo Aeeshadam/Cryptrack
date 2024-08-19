@@ -1,3 +1,4 @@
+import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,7 +13,7 @@ import Box from "@mui/material/Box";
 import { Typography } from "@mui/material";
 import { CoinListProps } from "../types/index";
 import { useCoinsData } from "@/hooks/useCoinsData";
-import { formatCurrency } from "@/utils";
+import { formatCurrency } from "@/utils/utils";
 import LoadingSpinner from "./LoadingSpinner";
 
 export default function CryptoTable() {

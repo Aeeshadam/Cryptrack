@@ -1,19 +1,33 @@
+import React from "react";
 import { useSelector } from "react-redux";
 import { AppState } from "@/store/store";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import ChipButton from "./ChipButton";
-import { formatCurrency } from "@/utils";
+import { formatCurrency } from "@/utils/utils";
 
 const CoinDetail = () => {
-  const { coin } = useSelector((state: AppState) => state.coinDetails);
-  console.log(coin);
-  const currentPrice = coin?.market_data.current_price.usd;
-  const priceChange24h = coin?.market_data.price_change_percentage_24h;
+  const { coin, error, loading } = useSelector(
+    (state: AppState) => state.coinDetails
+  );
+
+  if (
+    !coin ||
+    !coin.market_data?.current_price?.usd ||
+    coin.market_data.price_change_percentage_24h == null ||
+    !coin.market_cap_rank ||
+    !coin.name ||
+    !coin.image?.large
+  ) {
+    return null;
+  }
+
+  const currentPrice = coin?.market_data?.current_price?.usd;
+  const priceChange24h = coin?.market_data?.price_change_percentage_24h;
   const rank = coin?.market_cap_rank;
   const name = coin?.name;
-  const image = coin?.image.large;
+  const image = coin?.image?.large;
 
   return (
     <Box display="flex" flexDirection="column" gap="6px">
