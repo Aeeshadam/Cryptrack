@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
 import Image from "next/image";
@@ -8,7 +9,14 @@ import ListItemText from "@mui/material/ListItemText";
 import { useSearch } from "@/contexts/SearchContext";
 
 export default function SearchResult() {
-  const { filteredCoins } = useSearch();
+  const { filteredCoins, setOpenSearch } = useSearch();
+  const router = useRouter();
+
+  const handleClick = (coinId: string) => {
+    router.push(`/coin/${coinId}`);
+    setOpenSearch(false);
+  };
+
   return (
     <List
       sx={{
@@ -26,7 +34,7 @@ export default function SearchResult() {
       }
     >
       {filteredCoins.map((coin) => (
-        <ListItemButton key={coin.id}>
+        <ListItemButton key={coin.id} onClick={() => handleClick(coin.id)}>
           <ListItemIcon>
             <Image src={coin.image} alt={coin.name} width={30} height={30} />
           </ListItemIcon>
