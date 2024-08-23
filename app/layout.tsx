@@ -22,9 +22,11 @@ export default function RootLayout({
       <body>
         <ContextsProviders>
           <Container maxWidth="lg">
-            <Navbar />
-            {children}
-            <Footer />
+            <ModalWrapper>
+              <Navbar />
+              {children}
+              <Footer />
+            </ModalWrapper>
           </Container>
         </ContextsProviders>
       </body>

@@ -8,18 +8,9 @@ import ChipButton from "./ChipButton";
 import { formatCurrency } from "@/utils/utils";
 
 const CoinDetail = () => {
-  const { coin, error, loading } = useSelector(
-    (state: AppState) => state.coinDetails
-  );
+  const { coin, loading } = useSelector((state: AppState) => state.coinDetails);
 
-  if (
-    !coin ||
-    !coin.market_data?.current_price?.usd ||
-    coin.market_data.price_change_percentage_24h == null ||
-    !coin.market_cap_rank ||
-    !coin.name ||
-    !coin.image?.large
-  ) {
+  if (!coin || Object.keys(coin).length === 0) {
     return null;
   }
 

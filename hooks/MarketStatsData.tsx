@@ -4,16 +4,18 @@ import { AppState } from "@/store/store";
 
 const useMarketStatsData = () => {
   const { coin } = useSelector((state: AppState) => state.coinDetails);
-  const marketCap = coin?.market_data.market_cap.usd;
-  const circulatingSupply = coin?.market_data.circulating_supply;
-  const totalSupply = coin?.market_data.total_supply;
-  const fullyDilutedValuation = coin?.market_data.fully_diluted_valuation.usd;
-  const marketCapChange24h = coin?.market_data.market_cap_change_percentage_24h;
-  const priceChange24h = coin?.market_data.price_change_percentage_24h;
-  const allTimeLow = coin?.market_data.atl.usd;
+  const marketCap = coin?.market_data.market_cap?.usd;
+  const circulatingSupply = coin?.market_data?.circulating_supply;
+  const totalSupply = coin?.market_data?.total_supply;
+  const fullyDilutedValuation = coin?.market_data?.fully_diluted_valuation?.usd;
+  const marketCapChange24h =
+    coin?.market_data?.market_cap_change_percentage_24h;
+  const priceChange24h = coin?.market_data?.price_change_percentage_24h;
+  const allTimeLow = coin?.market_data.atl?.usd;
   const allTimeHigh = coin?.market_data.ath.usd;
-  const allTimeLowDate = coin?.market_data.atl_date.usd;
-  const allTimeHighDate = coin?.market_data.ath_date.usd;
+  const allTimeLowDate = coin?.market_data.atl_date?.usd;
+  const allTimeHighDate = coin?.market_data.ath_date?.usd;
+
   return [
     {
       title: "Market Cap",

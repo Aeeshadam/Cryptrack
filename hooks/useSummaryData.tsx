@@ -20,7 +20,6 @@ export const useSummaryData = () => {
         setSummaryData(data);
       } catch (error) {
         setError("Failed to fetch summary data");
-        console.error("Failed to fetch summary data:", error);
       } finally {
         setLoading(false);
       }

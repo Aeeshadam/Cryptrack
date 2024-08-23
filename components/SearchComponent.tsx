@@ -48,13 +48,16 @@ const SearchComponent = ({
               ml: "auto",
             }}
           >
-            <MobileSearchIconWrapper onClick={handleOpenSearch}>
+            <MobileSearchIconWrapper
+              data-testid="mobile-search"
+              onClick={handleOpenSearch}
+            >
               <SearchIcon />
             </MobileSearchIconWrapper>
           </Box>
         </>
       ) : (
-        <Box sx={{ display: "block" }}>
+        <Box sx={{ display: "block" }} data-testid="desktop-search">
           <Search>
             <SearchIconWrapper>
               <SearchIcon />

@@ -24,7 +24,11 @@ const ChipButton = ({
         },
       }}
     >
-      {isNegativeChange ? <KeyboardArrowDownIcon /> : <KeyboardArrowUpIcon />}
+      {isNegativeChange ? (
+        <KeyboardArrowDownIcon data-testid="KeyboardArrowDownIcon" />
+      ) : (
+        <KeyboardArrowUpIcon data-testid="KeyboardArrowUpIcon" />
+      )}
       <Typography
         sx={{
           fontSize: detailPage ? "20px" : "14px",

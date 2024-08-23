@@ -8,6 +8,10 @@ const About = () => {
   const { coin } = useSelector((state: AppState) => state.coinDetails);
   const about = coin?.description?.en;
 
+  if (!coin || Object.keys(coin).length === 0) {
+    return null;
+  }
+
   return (
     <Box bgcolor="secondary.main" marginY="2rem" padding="2rem">
       <Typography variant="h3">About</Typography>
@@ -24,11 +28,11 @@ const About = () => {
         justifyContent="space-between"
         flexWrap="wrap"
       >
-        {coin?.tickers.slice(0, 10).map((ticker: any) => (
+        {coin?.tickers?.slice(0, 10).map((ticker: any, index: number) => (
           <Typography
             color="primary.main"
             fontWeight={500}
-            key={ticker.market?.name}
+            key={index}
             variant="body2"
           >
             {ticker.market?.name}

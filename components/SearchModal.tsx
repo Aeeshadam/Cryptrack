@@ -26,14 +26,15 @@ const style = {
 export default function SearchModal() {
   const { openSearch, setOpenSearch } = useSearch();
   return (
-    <div>
+    <div data-testid="outsideElement">
       <Modal
+        data-testid="modal"
         open={openSearch}
         onClose={() => setOpenSearch(false)}
         aria-labelledby="modal-search"
         aria-describedby="modal-search input and result"
       >
-        <Box sx={style}>
+        <Box sx={style} data-testid="dialog">
           <SearchComponent editable={true} focus={true} mobileVersion={false} />
           <SearchResult />
         </Box>

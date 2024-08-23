@@ -1,22 +1,12 @@
 import React from "react";
 import { screen } from "@testing-library/react";
 import CoinDetail from "@/components/CoinDetail";
-
 import { renderWithRedux } from "@/utils/test-util";
 import { AppState } from "@/store/store";
 
 describe("CoinDetail Component", () => {
   it("renders correctly with mock data", () => {
-    const initialState: Partial<AppState> = {
-      coinList: {
-        coins: [],
-        loading: false,
-        error: null,
-      },
-      pagination: {
-        currentPage: 1,
-        itemsPerPage: 15,
-      },
+    const currentState: Partial<AppState> = {
       coinDetails: {
         coin: {
           market_data: {
@@ -32,7 +22,7 @@ describe("CoinDetail Component", () => {
       },
     };
 
-    renderWithRedux(<CoinDetail />, { initialState });
+    renderWithRedux(<CoinDetail />, { currentState });
 
     expect(screen.getByText("Rank #1")).toBeInTheDocument();
     expect(screen.getByText("Bitcoin")).toBeInTheDocument();
@@ -41,16 +31,7 @@ describe("CoinDetail Component", () => {
   });
 
   it("handles missing data gracefully", () => {
-    const initialState: Partial<AppState> = {
-      coinList: {
-        coins: [],
-        loading: false,
-        error: null,
-      },
-      pagination: {
-        currentPage: 1,
-        itemsPerPage: 15,
-      },
+    const currentState: Partial<AppState> = {
       coinDetails: {
         coin: {},
         loading: false,
@@ -58,7 +39,7 @@ describe("CoinDetail Component", () => {
       },
     };
 
-    const { container } = renderWithRedux(<CoinDetail />, { initialState });
+    const { container } = renderWithRedux(<CoinDetail />, { currentState });
 
     expect(container.firstChild).toBeNull();
   });

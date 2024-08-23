@@ -1,45 +1,65 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { render } from "@testing-library/react";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { AppState } from "@/store/store";
-import { ThemeProvider } from "@mui/material/styles";
-import { createTheme } from "@mui/material/styles";
-import { CssBaseline } from "@mui/material";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+
+const defaultState: Partial<AppState> = {
+  coinList: {
+    coins: [],
+    loading: false,
+    error: null,
+  },
+  pagination: {
+    currentPage: 1,
+    itemsPerPage: 15,
+  },
+  coinDetails: {
+    coin: {},
+    loading: false,
+    error: null,
+  },
+};
 
 const theme = createTheme();
-export interface CoinDetailsState {
-  coin: {
-    market_data: {
-      current_price: { usd: number };
-      price_change_percentage_24h: number;
-    };
-    market_cap_rank: number;
-    name: string;
-    image: { large: string };
-  };
-  loading: boolean;
-  error: string;
-}
+
 export function renderWithRedux(
   ui: React.ReactElement,
-  { initialState }: { initialState?: Partial<AppState> } = {}
+  {
+    currentState,
+    store,
+  }: { currentState?: Partial<AppState>; store?: any } = {}
 ) {
-  const store = configureStore({
-    reducer: {
-      coinList: (state = {}, action) => state,
-      pagination: (state = {}, action) => state,
-      coinDetails: (state = {}, action) => state,
-    },
-    preloadedState: initialState,
-  });
+  const testStore =
+    store ||
+    configureStore({
+      reducer: {
+        coinList: (state = defaultState.coinList, action) => state,
+        pagination: (state = defaultState.pagination, action) => state,
+        coinDetails: (state = defaultState.coinDetails, action) => state,
+      },
+      preloadedState: {
+        ...defaultState,
+        ...currentState,
+      },
+    });
 
-  return render(
-    <Provider store={store}>
+  interface WrapperProps {
+    children: ReactNode;
+  }
+
+  const Wrapper: React.FC<WrapperProps> = ({ children }) => (
+    <Provider store={testStore}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        {ui}
+        {children}
       </ThemeProvider>
     </Provider>
   );
+
+  return {
+    ...render(ui, { wrapper: Wrapper }),
+    store: testStore,
+  };
 }

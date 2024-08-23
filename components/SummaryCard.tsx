@@ -7,10 +7,14 @@ import { SummaryContentContainer } from "../styles/SummaryCardStyles";
 import { useSummaryData } from "@/hooks/useSummaryData";
 import LoadingSpinner from "@/components/LoadingSpinner";
 export default function SummaryCard() {
-  const { cardsData, loading } = useSummaryData();
+  const { cardsData, loading, error } = useSummaryData();
 
   if (loading) {
     return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return <Typography>{error}</Typography>;
   }
   return (
     <SummaryCardsContainer marginY="2rem">
