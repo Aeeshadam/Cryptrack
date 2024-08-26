@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
+  
     "test": "jest",
     "dev": "next dev",
     "build": "next build",
@@ -42,9 +42,5 @@
     "redux-mock-store": "^1.5.4",
     "ts-node": "^10.9.2",
     "typescript": "^5"
-  },
-  "resolutions": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
   }
 }

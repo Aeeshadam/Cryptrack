@@ -19,7 +19,7 @@ const Hero = () => {
         <HeroContent>
           <Typography variant="h1" marginBottom="1rem">
             The Ultimate
-            <HeroSpan> Cryto Portfolio </HeroSpan> Tracker
+            <HeroSpan> Crypto Portfolio </HeroSpan> Tracker
           </Typography>
           <StyledButton variant="contained">Create Portfolio</StyledButton>
         </HeroContent>

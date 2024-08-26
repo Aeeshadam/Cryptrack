@@ -17,8 +17,4 @@ export const SummaryContentContainer = styled(Box)({
   display: "flex",
   gap: "1rem",
   alignItems: "center",
-  "@media (min-width: 900px)": {
-    flexDirection: "column",
-    alignItems: "start",
-  },
 });

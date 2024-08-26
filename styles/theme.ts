@@ -16,6 +16,14 @@ const montserrat = Montserrat({
 
 const theme = createTheme({
   components: {
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          paddingLeft: "8px",
+          paddingRight: "8px",
+        },
+      },
+    },
     MuiPaper: {
       styleOverrides: {
         root: {

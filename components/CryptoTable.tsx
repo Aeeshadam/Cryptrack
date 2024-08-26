@@ -9,14 +9,24 @@ import Paper from "@mui/material/Paper";
 import { useRouter } from "next/navigation";
 import ChipButton from "./ChipButton";
 import Image from "next/image";
-import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 import { CoinListProps } from "../types/index";
 import { useCoinsData } from "@/hooks/useCoinsData";
 import { formatCurrency } from "@/utils/utils";
 import LoadingSpinner from "./LoadingSpinner";
+import { useMediaQuery, useTheme } from "@mui/material";
+import {
+  DesktopCell,
+  StyledTableRow,
+  tableContainerStyles,
+  StyledSubtitle,
+  CoinBox,
+  iconStyles,
+} from "@/styles/TableStyles";
 
 export default function CryptoTable() {
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
   const handleRowClick = (coinId: string) => {
     router.push(`/coin/${coinId}`);
@@ -25,74 +35,65 @@ export default function CryptoTable() {
   if (loading) return <LoadingSpinner />;
   if (error) return <p>Error: {error}</p>;
   return (
-    <TableContainer
-      component={Paper}
-      sx={{
-        backgroundColor: "secondary.main",
-        width: "100%",
-        overflowX: "auto",
-      }}
-    >
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+    <TableContainer component={Paper} sx={tableContainerStyles}>
+      <Table
+        aria-label=" holding table"
+        sx={{ width: "100%", tableLayout: "auto" }}
+      >
         <TableHead>
           <TableRow>
-            <TableCell>#</TableCell>
+            <DesktopCell>#</DesktopCell>
             <TableCell align="left">Crypto</TableCell>
-            <TableCell align="right">Prices</TableCell>
-            <TableCell align="right">24h Change</TableCell>
+            <TableCell align="left">Prices</TableCell>
+            <TableCell align="right">
+              {isSmallScreen ? "24HR" : "24H Change"}
+            </TableCell>
             <TableCell align="right">MarketCap</TableCell>
-            <TableCell align="right">Volume(24h)</TableCell>
+            <DesktopCell align="right">Volume</DesktopCell>
+            <DesktopCell align="right">Actions</DesktopCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {currentCoins.map((coin: CoinListProps) => (
-            <TableRow
+            <StyledTableRow
               key={coin.id}
               onClick={() => handleRowClick(coin.id)}
-              sx={{
-                "&:last-child td, &:last-child th": { border: 0 },
-                cursor: "pointer",
-                "&:hover": {
-                  backgroundColor: "secondary.dark",
-                },
-              }}
             >
-              <TableCell component="th" scope="row">
-                {coin.market_cap_rank}
-              </TableCell>
-              <TableCell align="left">
-                <Box
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="flex-start"
-                  gap="6px"
-                >
+              <DesktopCell scope="row">{coin.market_cap_rank}</DesktopCell>
+              <TableCell align="right">
+                <CoinBox>
                   <Image
                     src={coin.image}
                     alt={coin.name}
-                    width={24}
-                    height={24}
+                    width={isSmallScreen ? 16 : 24}
+                    height={isSmallScreen ? 16 : 24}
                   />
-                  <Typography variant="subtitle1" fontWeight={600}>
-                    {coin.name}
-                  </Typography>
-                </Box>
+                  <StyledSubtitle>
+                    {isSmallScreen ? coin.symbol.toUpperCase() : coin.name}
+                  </StyledSubtitle>
+                </CoinBox>
               </TableCell>
-              <TableCell align="right">
-                <Typography variant="subtitle1" fontWeight={600}>
+              <TableCell align="left">
+                <StyledSubtitle>
                   {formatCurrency(coin.current_price)}
-                </Typography>
+                </StyledSubtitle>
               </TableCell>
               <TableCell align="right">
                 <ChipButton change={coin.price_change_percentage_24h} />
               </TableCell>
-              <TableCell align="right">
+              <TableCell
+                align="right"
+                sx={{ fontSize: isSmallScreen ? "12px" : "16px" }}
+              >
                 {formatCurrency(coin.market_cap)}
               </TableCell>
-              <TableCell align="right">
+              <DesktopCell align="right">
                 {formatCurrency(coin.total_volume)}
-              </TableCell>
-            </TableRow>
+              </DesktopCell>
+              <DesktopCell align="right">
+                <AddIcon sx={iconStyles} />
+              </DesktopCell>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>
