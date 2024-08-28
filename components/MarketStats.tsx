@@ -6,7 +6,7 @@ import Tooltip from "@mui/material/Tooltip";
 import Box from "@mui/material/Box";
 import ChipButton from "./ChipButton";
 import { formatCurrency } from "@/utils/utils";
-import useMarketStatsData from "@/hooks/MarketStatsData";
+import useMarketStatsData from "@/hooks/useMarketStatsData";
 
 const MarketStats = () => {
   const marketData = useMarketStatsData();

@@ -4,6 +4,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "@/styles/theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { SearchProvider } from "./SearchContext";
+import { TransactionProvider } from "./TransactionContext";
 
 export default function ContextsProviders({
   children,
@@ -14,7 +15,9 @@ export default function ContextsProviders({
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <ClientProvider>
-        <SearchProvider>{children}</SearchProvider>
+        <TransactionProvider>
+          <SearchProvider>{children}</SearchProvider>
+        </TransactionProvider>
       </ClientProvider>
     </ThemeProvider>
   );

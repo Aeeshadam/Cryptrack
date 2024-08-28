@@ -54,6 +54,27 @@ export interface SearchContextProps {
   handleOpenSearch: () => void;
 }
 
+export interface TransactionContextProps {
+  openModal: boolean;
+  quantity: number;
+  setQuantity: (quantity: number) => void;
+  setOpenModal: (open: boolean) => void;
+  coins: CoinListProps[];
+  handleOpenModal: () => void;
+  transactionType: string;
+  setTransactionType: (type: string) => void;
+  calculateTotal: () => string | undefined;
+  handleTransactionTypeChange: (
+    event: React.MouseEvent<HTMLElement>,
+    newTransactionType: string | null
+  ) => void;
+  handleFormSubmit: (event: React.FormEvent) => void;
+  selectedCoin: string | null;
+  setSelectedCoin: (coin: string) => void;
+  pricePerCoin: number;
+  setPricePerCoin: (price: number) => void;
+}
+
 interface CoinGeckoMarketData {
   active_cryptocurrencies: number;
   upcoming_icos: number;
@@ -87,4 +108,10 @@ export interface CoinDetailsState {
   coin: any | null;
   loading: boolean;
   error: null | string;
+}
+
+export interface PotfolioCoin {
+  id: string;
+  name: string;
+  quantity: number;
 }
