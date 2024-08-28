@@ -8,11 +8,17 @@ import {
   HeroBox,
   HeroImageContainer,
 } from "../styles/HeroStyles";
+import { useRouter } from "next/navigation";
 import { Typography } from "@mui/material";
 import { StyledButton } from "@/components/StyledButton";
 import CommonCoins from "./CommonCoins";
 
 const Hero = () => {
+  const router = useRouter();
+  const handleCreatePortfolio = () => {
+    router.push("/portfolio");
+  };
+
   return (
     <HeroContainer>
       <HeroBox>
@@ -21,7 +27,9 @@ const Hero = () => {
             The Ultimate
             <HeroSpan> Crypto Portfolio </HeroSpan> Tracker
           </Typography>
-          <StyledButton variant="contained">Create Portfolio</StyledButton>
+          <StyledButton variant="contained" onClick={handleCreatePortfolio}>
+            Create Portfolio
+          </StyledButton>
         </HeroContent>
         <HeroImageContainer>
           <Image

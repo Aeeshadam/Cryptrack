@@ -10,8 +10,10 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import ChipButton from "./ChipButton";
 import { StyledButton } from "./StyledButton";
 import AddIcon from "@mui/icons-material/Add";
+import { useTransaction } from "@/contexts/TransactionContext";
 
 const PortfolioBalance = () => {
+  const { handleOpenModal } = useTransaction();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   return (
@@ -46,7 +48,7 @@ const PortfolioBalance = () => {
           </Box>
         </CardContent>
       </Card>
-      <StyledButton>
+      <StyledButton onClick={handleOpenModal}>
         {isSmallScreen ? <AddIcon /> : "Add Transation"}
       </StyledButton>
     </Box>

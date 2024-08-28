@@ -12,9 +12,12 @@ import Paper from "@mui/material/Paper";
 import { Typography } from "@mui/material";
 import TableRow from "@mui/material/TableRow";
 import { CoinListProps } from "../types/index";
-import { useCoinsData } from "@/hooks/useCoinsData";
+import { useSelector } from "react-redux";
+import { AppState } from "../store/store";
 import { formatCurrency } from "@/utils/utils";
 import LoadingSpinner from "./LoadingSpinner";
+import EmptyPortfolio from "./EmptyPortfolio";
+import { PotfolioCoin } from "@/types/index";
 import { useMediaQuery, useTheme } from "@mui/material";
 import {
   DesktopCell,
@@ -38,10 +41,8 @@ const HoldingsTable = () => {
     router.push(`/coin/${coinId}`);
   };
 
-  const { currentCoins, loading, error } = useCoinsData();
-
-  if (loading) return <LoadingSpinner />;
-  if (error) return <p>Error: {error}</p>;
+  const coinList = useSelector((state: AppState) => state.coinList.coins);
+  const potfolioCoins = useSelector((state: AppState) => state.portfolio.coins);
 
   return (
     <>
@@ -65,69 +66,77 @@ const HoldingsTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {currentCoins.map((coin: CoinListProps) => (
-              <StyledTableRow
-                key={coin.id}
-                onClick={() => handleRowClick(coin.id)}
-              >
-                <DesktopCell scope="row">{coin.market_cap_rank}</DesktopCell>
-                <TableCell align="right">
-                  <CoinBox>
-                    <Image
-                      src={coin.image}
-                      alt={coin.name}
-                      width={isSmallScreen ? 16 : 24}
-                      height={isSmallScreen ? 16 : 24}
-                    />
+            {potfolioCoins.map((portfolioCoin: PotfolioCoin) => {
+              const coin = coinList.find(
+                (coin: CoinListProps) => coin.id === portfolioCoin.id
+              );
+              if (!coin) return null;
+              return (
+                <StyledTableRow
+                  key={coin.id}
+                  onClick={() => handleRowClick(coin.id)}
+                >
+                  <DesktopCell scope="row">{coin.market_cap_rank}</DesktopCell>
+                  <TableCell align="right">
+                    <CoinBox>
+                      <Image
+                        src={coin.image}
+                        alt={coin.name}
+                        width={isSmallScreen ? 16 : 24}
+                        height={isSmallScreen ? 16 : 24}
+                      />
+                      <StyledSubtitle>
+                        {isSmallScreen ? coin.symbol.toUpperCase() : coin.name}
+                      </StyledSubtitle>
+                    </CoinBox>
+                  </TableCell>
+                  <TableCell align="left">
                     <StyledSubtitle>
-                      {isSmallScreen ? coin.symbol.toUpperCase() : coin.name}
+                      {formatCurrency(coin.current_price)}
                     </StyledSubtitle>
-                  </CoinBox>
-                </TableCell>
-                <TableCell align="left">
-                  <StyledSubtitle>
-                    {formatCurrency(coin.current_price)}
-                  </StyledSubtitle>
-                </TableCell>
-                <TableCell align="right">
-                  <ChipButton change={coin.price_change_percentage_24h} />
-                </TableCell>
-                <DesktopCell align="right">
-                  {formatCurrency(coin.market_cap)}
-                </DesktopCell>
-                <TableCell align="right">
-                  <StyledSubtitle>100</StyledSubtitle>
-                  <Typography
-                    variant="body2"
-                    sx={{ fontSize: isSmallScreen ? "10px" : "16px" }}
-                  >
-                    {formatCurrency(1000)}
-                  </Typography>
-                </TableCell>
-                <DesktopCell align="right">
-                  <IconContainer>
-                    <EditIcon
-                      sx={iconStyles}
-                      onClick={(
-                        event: React.MouseEvent<SVGSVGElement, MouseEvent>
-                      ) => {
-                        event.stopPropagation();
-                        alert("Add clicked");
-                      }}
-                    />
-                    <ClearIcon
-                      sx={clearIconStyles}
-                      onClick={(
-                        event: React.MouseEvent<SVGSVGElement, MouseEvent>
-                      ) => {
-                        event.stopPropagation();
-                        alert("Clear clicked");
-                      }}
-                    />
-                  </IconContainer>
-                </DesktopCell>
-              </StyledTableRow>
-            ))}
+                  </TableCell>
+                  <TableCell align="right">
+                    <ChipButton change={coin.price_change_percentage_24h} />
+                  </TableCell>
+                  <DesktopCell align="right">
+                    {formatCurrency(coin.market_cap)}
+                  </DesktopCell>
+                  <TableCell align="right">
+                    <StyledSubtitle>{portfolioCoin.quantity}</StyledSubtitle>
+                    <Typography
+                      variant="body2"
+                      sx={{ fontSize: isSmallScreen ? "10px" : "16px" }}
+                    >
+                      {formatCurrency(
+                        portfolioCoin.quantity * coin.current_price
+                      )}
+                    </Typography>
+                  </TableCell>
+                  <DesktopCell align="right">
+                    <IconContainer>
+                      <EditIcon
+                        sx={iconStyles}
+                        onClick={(
+                          event: React.MouseEvent<SVGSVGElement, MouseEvent>
+                        ) => {
+                          event.stopPropagation();
+                          alert("Add clicked");
+                        }}
+                      />
+                      <ClearIcon
+                        sx={clearIconStyles}
+                        onClick={(
+                          event: React.MouseEvent<SVGSVGElement, MouseEvent>
+                        ) => {
+                          event.stopPropagation();
+                          alert("Clear clicked");
+                        }}
+                      />
+                    </IconContainer>
+                  </DesktopCell>
+                </StyledTableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
