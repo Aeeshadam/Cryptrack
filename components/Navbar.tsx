@@ -5,10 +5,14 @@ import Logo from "./Logo";
 import SearchComponent from "./SearchComponent";
 import { StyledAppBar, StyledToolbar } from "../styles/NavbarStyles";
 import { StyledButton } from "./StyledButton";
-import { useTransaction } from "@/contexts/TransactionContext";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
-  const { handleOpenModal } = useTransaction();
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/sign-in");
+  };
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
@@ -16,7 +20,7 @@ export default function Navbar() {
           <StyledToolbar style={{ padding: 0 }}>
             <Logo />
             <SearchComponent />
-            <StyledButton onClick={handleOpenModal} size="small">
+            <StyledButton onClick={handleClick} size="small">
               Get Started
             </StyledButton>
           </StyledToolbar>

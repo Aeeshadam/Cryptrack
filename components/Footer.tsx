@@ -14,6 +14,7 @@ const Footer = () => {
       alignItems="center"
       gap={3}
       pt={6}
+      marginTop="auto"
     >
       <Box display="flex" gap="1rem">
         <Avatar

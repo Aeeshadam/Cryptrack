@@ -14,6 +14,7 @@ import { CoinListProps } from "../types/index";
 import { useCoinsData } from "@/hooks/useCoinsData";
 import { formatCurrency } from "@/utils/utils";
 import LoadingSpinner from "./LoadingSpinner";
+import { useTransaction } from "@/contexts/TransactionContext";
 import { useMediaQuery, useTheme } from "@mui/material";
 import {
   DesktopCell,
@@ -26,6 +27,7 @@ import {
 
 export default function CryptoTable() {
   const theme = useTheme();
+  const { handleOpenModal } = useTransaction();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
   const handleRowClick = (coinId: string) => {
@@ -91,7 +93,15 @@ export default function CryptoTable() {
                 {formatCurrency(coin.total_volume)}
               </DesktopCell>
               <DesktopCell align="right">
-                <AddIcon sx={iconStyles} />
+                <AddIcon
+                  sx={iconStyles}
+                  onClick={(
+                    event: React.MouseEvent<SVGSVGElement, MouseEvent>
+                  ) => {
+                    event.stopPropagation();
+                    handleOpenModal(coin.id);
+                  }}
+                />
               </DesktopCell>
             </StyledTableRow>
           ))}
