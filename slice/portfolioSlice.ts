@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PotfolioCoin } from "@/types";
+import { PortfolioCoin } from "@/types";
 
 interface PortfolioState {
-  coins: PotfolioCoin[];
+  coins: PortfolioCoin[];
 }
 
 const initialState: PortfolioState = {
@@ -13,7 +13,7 @@ const portfolioSlice = createSlice({
   name: "portfolio",
   initialState,
   reducers: {
-    addCoin: (state, action: PayloadAction<PotfolioCoin>) => {
+    addCoin: (state, action: PayloadAction<PortfolioCoin>) => {
       const existingCoin = state.coins.find(
         (coin) => coin.id === action.payload.id
       );
@@ -26,7 +26,7 @@ const portfolioSlice = createSlice({
     removeCoin: (state, action: PayloadAction<string>) => {
       state.coins = state.coins.filter((coin) => coin.id !== action.payload);
     },
-    updateCoin: (state, action: PayloadAction<PotfolioCoin>) => {
+    updateCoin: (state, action: PayloadAction<PortfolioCoin>) => {
       const existingCoin = state.coins.find(
         (coin) => coin.id === action.payload.id
       );

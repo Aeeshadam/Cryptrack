@@ -12,17 +12,16 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import TextField from "@mui/material/TextField";
 import { StyledButton } from "./StyledButton";
 import { style } from "@/styles/ModalStyles";
+import usePortfolio from "@/hooks/usePortfolio";
 import { useTransaction } from "@/contexts/TransactionContext";
 
 const TransactionModal = () => {
   const {
     openModal,
     setOpenModal,
-    coins,
     transactionType,
     calculateTotal,
     handleTransactionTypeChange,
-    handleFormSubmit,
     selectedCoin,
     setSelectedCoin,
     quantity,
@@ -30,6 +29,7 @@ const TransactionModal = () => {
     pricePerCoin,
     setPricePerCoin,
   } = useTransaction();
+  const { coins, handleAddTransaction } = usePortfolio();
 
   return (
     <Box data-testid="outsideElement">
@@ -44,7 +44,7 @@ const TransactionModal = () => {
           sx={style}
           data-testid="dialog"
           component="form"
-          onSubmit={handleFormSubmit}
+          onSubmit={handleAddTransaction}
         >
           <Typography variant="h6" component="h2" gutterBottom>
             Add Transaction
@@ -105,7 +105,6 @@ const TransactionModal = () => {
           />
           <TextField
             fullWidth
-            required
             value={pricePerCoin}
             onChange={(e) => setPricePerCoin(parseFloat(e.target.value))}
             label="Price per coin"

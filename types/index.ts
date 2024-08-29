@@ -59,8 +59,7 @@ export interface TransactionContextProps {
   quantity: number;
   setQuantity: (quantity: number) => void;
   setOpenModal: (open: boolean) => void;
-  coins: CoinListProps[];
-  handleOpenModal: () => void;
+  handleOpenModal: (coinId: string) => void;
   transactionType: string;
   setTransactionType: (type: string) => void;
   calculateTotal: () => string | undefined;
@@ -68,7 +67,6 @@ export interface TransactionContextProps {
     event: React.MouseEvent<HTMLElement>,
     newTransactionType: string | null
   ) => void;
-  handleFormSubmit: (event: React.FormEvent) => void;
   selectedCoin: string | null;
   setSelectedCoin: (coin: string) => void;
   pricePerCoin: number;
@@ -110,7 +108,7 @@ export interface CoinDetailsState {
   error: null | string;
 }
 
-export interface PotfolioCoin {
+export interface PortfolioCoin {
   id: string;
   name: string;
   quantity: number;

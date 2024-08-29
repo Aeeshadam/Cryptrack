@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  
     "test": "jest",
     "dev": "next dev",
     "build": "next build",
@@ -13,6 +12,7 @@
   "dependencies": {
     "@mui/icons-material": "^5.16.4",
     "axios": "^1.7.3",
+    "firebase": "^10.12.4",
     "next": "14.2.5",
     "next-redux-wrapper": "^8.1.0",
     "react": "^18",

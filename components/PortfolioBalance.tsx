@@ -48,7 +48,7 @@ const PortfolioBalance = () => {
           </Box>
         </CardContent>
       </Card>
-      <StyledButton onClick={handleOpenModal}>
+      <StyledButton onClick={() => handleOpenModal("")}>
         {isSmallScreen ? <AddIcon /> : "Add Transation"}
       </StyledButton>
     </Box>

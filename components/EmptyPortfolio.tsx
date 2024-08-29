@@ -14,12 +14,12 @@ const EmptyPortfolio = () => {
       alignItems="center"
       spacing={2}
     >
-      <Box width={{ sm: "50%", xs: "75%" }} maxWidth="400px">
+      <Box width={{ sm: "50%", xs: "75%" }} maxWidth="300px">
         <Image
           src="/empty.png"
           alt="hero"
-          width={400}
-          height={400}
+          width={300}
+          height={300}
           style={{
             width: "100%",
             height: "auto",

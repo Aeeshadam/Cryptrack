@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useMediaQuery, useTheme } from "@mui/material";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -15,10 +16,8 @@ import { CoinListProps } from "../types/index";
 import { useSelector } from "react-redux";
 import { AppState } from "../store/store";
 import { formatCurrency } from "@/utils/utils";
-import LoadingSpinner from "./LoadingSpinner";
-import EmptyPortfolio from "./EmptyPortfolio";
-import { PotfolioCoin } from "@/types/index";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { PortfolioCoin } from "@/types/index";
+import usePortfolio from "@/hooks/usePortfolio";
 import {
   DesktopCell,
   IconContainer,
@@ -41,6 +40,7 @@ const HoldingsTable = () => {
     router.push(`/coin/${coinId}`);
   };
 
+  const { handleRemoveCoin } = usePortfolio();
   const coinList = useSelector((state: AppState) => state.coinList.coins);
   const potfolioCoins = useSelector((state: AppState) => state.portfolio.coins);
 
@@ -66,9 +66,9 @@ const HoldingsTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {potfolioCoins.map((portfolioCoin: PotfolioCoin) => {
+            {potfolioCoins.map((portfolioCoin: PortfolioCoin) => {
               const coin = coinList.find(
-                (coin: CoinListProps) => coin.id === portfolioCoin.id
+                (coin: CoinListProps) => coin.id === portfolioCoin?.id
               );
               if (!coin) return null;
               return (
@@ -129,7 +129,7 @@ const HoldingsTable = () => {
                           event: React.MouseEvent<SVGSVGElement, MouseEvent>
                         ) => {
                           event.stopPropagation();
-                          alert("Clear clicked");
+                          handleRemoveCoin(coin.id);
                         }}
                       />
                     </IconContainer>
