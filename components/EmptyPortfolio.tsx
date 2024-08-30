@@ -5,8 +5,10 @@ import Stack from "@mui/material/Stack";
 import { Box } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { StyledButton } from "./StyledButton";
+import { useTransaction } from "@/contexts/TransactionContext";
 
 const EmptyPortfolio = () => {
+  const { handleOpenModal } = useTransaction();
   return (
     <Stack
       marginY="4rem"
@@ -30,7 +32,9 @@ const EmptyPortfolio = () => {
       <Typography variant="h2" fontWeight="600">
         Your Portfolio needs some work!
       </Typography>
-      <StyledButton>Start By Adding a coin</StyledButton>
+      <StyledButton onClick={() => handleOpenModal("")}>
+        Start By Adding a coin
+      </StyledButton>
     </Stack>
   );
 };

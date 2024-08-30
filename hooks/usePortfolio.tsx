@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCoin } from "../slice/portfolioSlice";
 import { getPortfolioCoins } from "@/firebase/firestoreService";
-import { PortfolioCoin } from "@/types";
+import { CoinListProps, PortfolioCoin } from "@/types";
 import { AppDispatch, AppState } from "@/store/store";
 import {
   addCoinToPortfolio,
@@ -30,7 +30,7 @@ const usePortfolio = () => {
     setOpenModal,
   } = useTransaction();
 
-  const fetchPortfolioCoins = async () => {
+  /*  const fetchPortfolioCoins = async () => {
     setLoading(true);
     try {
       const fetchedCoins = await getPortfolioCoins();
@@ -54,6 +54,41 @@ const usePortfolio = () => {
     } finally {
       setLoading(false);
     }
+  }; */
+
+  const calculateTotalBalance = () => {
+    return portfolioCoins.reduce((acc, portfolioCoin) => {
+      const coin: any = coins.find((c) => c.id === portfolioCoin.id);
+      if (coin) {
+        return acc + portfolioCoin.quantity * coin.current_price;
+      }
+      return acc;
+    }, 0);
+  };
+
+  const calculate24HourChangePercentage = () => {
+    const { totalValue, totalPreviousValue } = portfolioCoins.reduce(
+      (totals, portfolioCoin) => {
+        const coin = coins.find((c) => c.id === portfolioCoin.id);
+        if (coin) {
+          const currentCoinValue = portfolioCoin.quantity * coin.current_price;
+          const previousCoinValue =
+            portfolioCoin.quantity *
+            (coin.current_price / (1 + coin.price_change_percentage_24h / 100));
+
+          totals.totalValue += currentCoinValue;
+          totals.totalPreviousValue += previousCoinValue;
+        }
+        return totals;
+      },
+      { totalValue: 0, totalPreviousValue: 0 }
+    );
+
+    if (totalPreviousValue === 0) return 0;
+
+    const percentageChange =
+      ((totalValue - totalPreviousValue) / totalPreviousValue) * 100;
+    return percentageChange;
   };
 
   const handleAddTransaction = (event: React.FormEvent) => {
@@ -98,11 +133,13 @@ const usePortfolio = () => {
     }
   };
   return {
-    fetchPortfolioCoins,
+    // fetchPortfolioCoins,
     handleAddTransaction,
     handleRemoveCoin,
     coins,
     loading,
+    calculate24HourChangePercentage,
+    calculateTotalBalance,
     setLoading,
   };
 };

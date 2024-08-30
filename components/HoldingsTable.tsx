@@ -18,6 +18,8 @@ import { AppState } from "../store/store";
 import { formatCurrency } from "@/utils/utils";
 import { PortfolioCoin } from "@/types/index";
 import usePortfolio from "@/hooks/usePortfolio";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+
 import {
   DesktopCell,
   IconContainer,
@@ -62,7 +64,9 @@ const HoldingsTable = () => {
               </TableCell>
               <DesktopCell align="right">MarketCap</DesktopCell>
               <TableCell align="right">Holdings</TableCell>
-              <DesktopCell align="right">Actions</DesktopCell>
+              <DesktopCell align="right">
+                <MoreVertIcon />
+              </DesktopCell>
             </TableRow>
           </TableHead>
           <TableBody>
