@@ -12,7 +12,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import TextField from "@mui/material/TextField";
 import { StyledButton } from "./StyledButton";
 import { style } from "@/styles/ModalStyles";
-import usePortfolio from "@/hooks/usePortfolio";
+import { usePortfolio } from "@/contexts/PortfolioContext";
 import { useTransaction } from "@/contexts/TransactionContext";
 
 const TransactionModal = () => {
@@ -29,8 +29,14 @@ const TransactionModal = () => {
     pricePerCoin,
     setPricePerCoin,
   } = useTransaction();
-  const { coins, handleAddTransaction } = usePortfolio();
+  const { coins, handleAddTransaction, portfolioCoins } = usePortfolio();
 
+  const transactionCoins =
+    transactionType === "buy"
+      ? coins
+      : coins.filter((coin) =>
+          portfolioCoins.some((portfolioCoin) => portfolioCoin.id === coin.id)
+        );
   return (
     <Box data-testid="outsideElement">
       <Modal
@@ -72,7 +78,7 @@ const TransactionModal = () => {
             value={selectedCoin || ""}
             onChange={(e) => setSelectedCoin(e.target.value)}
           >
-            {coins.map((coin) => (
+            {transactionCoins.map((coin) => (
               <MenuItem
                 key={coin.id}
                 value={coin.id}

@@ -1,42 +1,26 @@
 "use client";
-import React, { useState } from "react";
-import {
-  TextField,
-  Typography,
-  Container,
-  Box,
-  Snackbar,
-  Alert,
-} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { TextField, Typography, Container, Box } from "@mui/material";
 import { StyledButton } from "@/components/StyledButton";
-import { auth } from "@/firebase/firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from "@/contexts/AuthContext";
 
 const SignInForm = () => {
-  const [email, setEmail] = useState("");
+  const { signIn, error, loading, setError } = useAuth();
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [email, setEmail] = useState("");
 
-  const handleSubmit = (event: React.FormEvent) => {
+  useEffect(() => {
+    setError("");
+  }, [password, email]);
+
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    try {
-      signInWithEmailAndPassword(auth, email, password);
-      setOpenSnackbar(true);
-      setTimeout(() => {
-        window.location.href = "/";
-      }, 1000);
-    } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
-      } else {
-        setError("An unknown error occurred");
-      }
-    }
-  };
 
-  const handleCloseSnackbar = () => {
-    setOpenSnackbar(false);
+    const success = await signIn(email, password);
+
+    if (success) {
+      window.location.href = "/";
+    }
   };
 
   return (
@@ -90,21 +74,6 @@ const SignInForm = () => {
           </Typography>
         </Box>
       </Box>
-      <Snackbar
-        open={openSnackbar}
-        autoHideDuration={6000}
-        onClose={handleCloseSnackbar}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert
-          onClose={handleCloseSnackbar}
-          severity="success"
-          variant="filled"
-          sx={{ width: "100%" }}
-        >
-          Signed in successfully! Redirecting...
-        </Alert>
-      </Snackbar>
     </Container>
   );
 };

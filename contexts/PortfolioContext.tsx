@@ -1,25 +1,34 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addCoin } from "../slice/portfolioSlice";
-import { getPortfolioCoins } from "@/firebase/firestoreService";
-import { CoinListProps, PortfolioCoin } from "@/types";
-import { AppDispatch, AppState } from "@/store/store";
+import { addCoin, removeCoin } from "../slice/portfolioSlice";
 import {
+  getPortfolioCoins,
   addCoinToPortfolio,
   updateCoinInPortfolio,
   removeCoinFromPortfolio,
 } from "@/firebase/firestoreService";
+import { PortfolioCoin, PortfolioContextProps } from "@/types";
+import { AppDispatch, AppState } from "@/store/store";
+import { useAuth } from "@/contexts/AuthContext";
 import { useTransaction } from "@/contexts/TransactionContext";
-import { removeCoin } from "../slice/portfolioSlice";
 
-const usePortfolio = () => {
-  const [loading, setLoading] = useState(false);
+const PortfolioContext = createContext<PortfolioContextProps | undefined>(
+  undefined
+);
+
+export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  const { user } = useAuth();
+  const [loading, setLoading] = useState(true);
+  const [fetchedCoins, setFetchedCoins] = useState<PortfolioCoin[]>([]);
   const dispatch = useDispatch<AppDispatch>();
   const portfolioCoins = useSelector(
     (state: AppState) => state.portfolio.coins
   );
   const coins = useSelector((state: AppState) => state.coinList.coins);
+
   const {
     selectedCoin,
     setSelectedCoin,
@@ -30,16 +39,16 @@ const usePortfolio = () => {
     setOpenModal,
   } = useTransaction();
 
-  /*  const fetchPortfolioCoins = async () => {
-    setLoading(true);
+  const fetchPortfolioCoins = async (userUid: string) => {
+    if (!user) return;
     try {
-      const fetchedCoins = await getPortfolioCoins();
+      const fetchedCoins = await getPortfolioCoins(user.uid);
       const validCoins: PortfolioCoin[] = [];
 
       await Promise.all(
         fetchedCoins.map(async (coin: PortfolioCoin) => {
           if (coin.quantity === 0) {
-            await removeCoinFromPortfolio(coin.id);
+            await removeCoinFromPortfolio(user.uid, coin.id);
           } else {
             validCoins.push(coin);
             dispatch(addCoin(coin));
@@ -51,10 +60,8 @@ const usePortfolio = () => {
     } catch (error) {
       console.error("Error fetching and cleaning portfolio coins:", error);
       return [];
-    } finally {
-      setLoading(false);
     }
-  }; */
+  };
 
   const calculateTotalBalance = () => {
     return portfolioCoins.reduce((acc, portfolioCoin) => {
@@ -93,6 +100,7 @@ const usePortfolio = () => {
 
   const handleAddTransaction = (event: React.FormEvent) => {
     event.preventDefault();
+    if (!user) return;
     if (selectedCoin && quantity > 0) {
       const coin = coins.find((coin) => coin.id === selectedCoin);
       if (coin) {
@@ -111,9 +119,9 @@ const usePortfolio = () => {
         };
         dispatch(addCoin(updatedCoin));
         if (existingPortfolioCoin) {
-          updateCoinInPortfolio(updatedCoin);
+          updateCoinInPortfolio(user.uid, updatedCoin);
         } else {
-          addCoinToPortfolio(updatedCoin);
+          addCoinToPortfolio(user.uid, updatedCoin);
         }
       }
     }
@@ -121,27 +129,58 @@ const usePortfolio = () => {
     setSelectedCoin("");
     setQuantity(0);
     setPricePerCoin(0);
-    console.log(portfolioCoins);
   };
 
   const handleRemoveCoin = (coinId: string) => {
+    if (!user) return;
     try {
-      removeCoinFromPortfolio(coinId);
+      removeCoinFromPortfolio(user.uid, coinId);
       dispatch(removeCoin(coinId));
     } catch (error) {
       console.error("Error removing coin from portfolio:", error);
     }
   };
-  return {
-    // fetchPortfolioCoins,
-    handleAddTransaction,
-    handleRemoveCoin,
-    coins,
-    loading,
-    calculate24HourChangePercentage,
-    calculateTotalBalance,
-    setLoading,
-  };
+
+  //loading portfolio coins
+  useEffect(() => {
+    const fetchCoins = async () => {
+      if (user) {
+        try {
+          const coins = await fetchPortfolioCoins(user.uid);
+          setFetchedCoins(coins || []);
+        } catch (error) {
+          console.error("Error fetching portfolio coins: ", error);
+        } finally {
+          setLoading(false);
+        }
+      }
+    };
+    fetchCoins();
+  }, [user, handleAddTransaction, handleRemoveCoin]);
+
+  return (
+    <PortfolioContext.Provider
+      value={{
+        portfolioCoins,
+        coins,
+        loading,
+        fetchedCoins,
+        fetchPortfolioCoins,
+        handleAddTransaction,
+        handleRemoveCoin,
+        calculateTotalBalance,
+        calculate24HourChangePercentage,
+      }}
+    >
+      {children}
+    </PortfolioContext.Provider>
+  );
 };
 
-export default usePortfolio;
+export const usePortfolio = () => {
+  const context = useContext(PortfolioContext);
+  if (!context) {
+    throw new Error("usePortfolio must be used within a PortfolioProvider");
+  }
+  return context;
+};

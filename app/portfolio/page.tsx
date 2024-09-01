@@ -1,39 +1,22 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Box } from "@mui/material";
-import { PortfolioCoin } from "@/types";
 import PortfolioBalance from "@/components/PortfolioBalance";
 import HoldingsTable from "@/components/HoldingsTable";
 import EmptyPortfolio from "@/components/EmptyPortfolio";
-import usePortfolio from "@/hooks/usePortfolio";
+import { usePortfolio } from "@/contexts/PortfolioContext";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
 const Page = () => {
-  const [portfolioCoins, setPortfolioCoins] = useState<PortfolioCoin[]>([]);
-  const { fetchPortfolioCoins } = usePortfolio();
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchCoins = async () => {
-      try {
-        const coins = await fetchPortfolioCoins();
-        setPortfolioCoins(coins);
-      } catch (error) {
-        console.error("Error fetching portfolio coins: ", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCoins();
-  }, []);
+  const { fetchedCoins, loading } = usePortfolio();
 
   if (loading) {
     return <LoadingSpinner />;
   }
 
-  /* if (portfolioCoins.length === 0) {
+  if (fetchedCoins.length === 0) {
     return <EmptyPortfolio />;
-  } */
+  }
   return (
     <Box>
       <PortfolioBalance />

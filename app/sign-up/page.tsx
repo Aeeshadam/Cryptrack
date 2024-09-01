@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   TextField,
   Typography,
@@ -9,32 +9,39 @@ import {
   Alert,
 } from "@mui/material";
 import { StyledButton } from "@/components/StyledButton";
-import { auth } from "@/firebase/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useAuth } from "@/contexts/AuthContext";
 
 const SignUpForm = () => {
-  const [email, setEmail] = useState("");
+  const { signUp, error, loading, setError } = useAuth();
+  const [name, setName] = useState<string>("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [localError, setLocalError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
+
+  useEffect(() => {
+    setError("");
+    setLocalError("");
+  }, [confirmPassword, password]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    if (password !== confirmPassword) return setError("Passwords do not match");
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
+    const email = (event.target as any).email.value;
+
+    if (password !== confirmPassword) {
+      setLocalError("Passwords do not match");
+      console.log("Local Error:", localError);
+      return;
+    }
+
+    const sucess = await signUp(email, password, name);
+
+    if (sucess) {
       setOpenSnackbar(true);
+
       setTimeout(() => {
         window.location.href = "/";
       }, 1000);
-    } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
-      } else {
-        setError("An unknown error occurred");
-      }
     }
   };
 
@@ -43,7 +50,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <Container component="main" sx={{ height: "50vh" }} maxWidth="sm">
+    <Container component="main" sx={{ height: "60vh" }} maxWidth="sm">
       <Box
         sx={{
           width: "100%",
@@ -66,12 +73,20 @@ const SignUpForm = () => {
             margin="normal"
             required
             fullWidth
+            label="Name"
+            name="name"
+            autoComplete="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
             type="email"
             label="Email Address"
             name="email"
-            autoComplete="new-email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            autoComplete="email"
           />
           <TextField
             margin="normal"
@@ -80,9 +95,9 @@ const SignUpForm = () => {
             name="password"
             label="Password"
             type="password"
-            autoComplete="new-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="new-password"
           />
           <TextField
             margin="normal"
@@ -96,15 +111,15 @@ const SignUpForm = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
           <StyledButton type="submit" fullWidth sx={{ marginY: "1rem" }}>
-            Sign In
+            Sign Up
           </StyledButton>
           <Typography variant="body2" align="center">
             Already have an account?
             <a href="/sign-in"> Sign In</a>
           </Typography>
-          {error && (
+          {(error || localError) && (
             <Typography variant="body2" color="error.main" align="center">
-              {error}
+              {error || localError}
             </Typography>
           )}
         </Box>

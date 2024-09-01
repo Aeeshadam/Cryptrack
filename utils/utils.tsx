@@ -6,3 +6,8 @@ export const formatCurrency = (value: number) => {
 export const formatPercentage = (value: number) => {
   return `${Math.abs(value).toFixed(2)}%`;
 };
+
+export const getInitials = (name: string) => {
+  const [firstName, lastName] = name.split(" ");
+  return `${firstName.charAt(0)}${lastName ? lastName.charAt(0) : ""}`;
+};

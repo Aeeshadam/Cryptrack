@@ -9,31 +9,30 @@ import Paper from "@mui/material/Paper";
 import { useRouter } from "next/navigation";
 import ChipButton from "./ChipButton";
 import Image from "next/image";
-import AddIcon from "@mui/icons-material/Add";
 import { CoinListProps } from "../types/index";
 import { useCoinsData } from "@/hooks/useCoinsData";
 import { formatCurrency } from "@/utils/utils";
 import LoadingSpinner from "./LoadingSpinner";
 import { useTransaction } from "@/contexts/TransactionContext";
 import { useMediaQuery, useTheme } from "@mui/material";
+
 import {
   DesktopCell,
   StyledTableRow,
   tableContainerStyles,
   StyledSubtitle,
   CoinBox,
-  iconStyles,
 } from "@/styles/TableStyles";
 
 export default function CryptoTable() {
   const theme = useTheme();
-  const { handleOpenModal } = useTransaction();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const router = useRouter();
   const handleRowClick = (coinId: string) => {
     router.push(`/coin/${coinId}`);
   };
   const { currentCoins, loading, error } = useCoinsData();
+
   if (loading) return <LoadingSpinner />;
   if (error) return <p>Error: {error}</p>;
   return (
@@ -52,7 +51,6 @@ export default function CryptoTable() {
             </TableCell>
             <TableCell align="right">MarketCap</TableCell>
             <DesktopCell align="right">Volume</DesktopCell>
-            <DesktopCell align="right">Actions</DesktopCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -91,17 +89,6 @@ export default function CryptoTable() {
               </TableCell>
               <DesktopCell align="right">
                 {formatCurrency(coin.total_volume)}
-              </DesktopCell>
-              <DesktopCell align="right">
-                <AddIcon
-                  sx={iconStyles}
-                  onClick={(
-                    event: React.MouseEvent<SVGSVGElement, MouseEvent>
-                  ) => {
-                    event.stopPropagation();
-                    handleOpenModal(coin.id);
-                  }}
-                />
               </DesktopCell>
             </StyledTableRow>
           ))}

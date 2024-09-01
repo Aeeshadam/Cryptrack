@@ -12,10 +12,16 @@ import { useRouter } from "next/navigation";
 import { Typography } from "@mui/material";
 import { StyledButton } from "@/components/StyledButton";
 import CommonCoins from "./CommonCoins";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Hero = () => {
   const router = useRouter();
+  const { user } = useAuth();
   const handleCreatePortfolio = () => {
+    if (!user) {
+      router.push("/sign-in");
+      return;
+    }
     router.push("/portfolio");
   };
 
@@ -28,7 +34,7 @@ const Hero = () => {
             <HeroSpan> Crypto Portfolio </HeroSpan> Tracker
           </Typography>
           <StyledButton variant="contained" onClick={handleCreatePortfolio}>
-            Create Portfolio
+            {user ? "View Portfolio" : "Create Portfolio"}
           </StyledButton>
         </HeroContent>
         <HeroImageContainer>

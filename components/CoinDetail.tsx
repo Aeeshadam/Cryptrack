@@ -10,8 +10,10 @@ import { formatCurrency } from "@/utils/utils";
 import { StyledButton } from "./StyledButton";
 import AddIcon from "@mui/icons-material/Add";
 import { useTransaction } from "@/contexts/TransactionContext";
+import { useAuth } from "@/contexts/AuthContext";
 
 const CoinDetail = () => {
+  const { user } = useAuth();
   const { coin } = useSelector((state: AppState) => state.coinDetails);
   const { handleOpenModal } = useTransaction();
   const theme = useTheme();
@@ -64,9 +66,11 @@ const CoinDetail = () => {
           <ChipButton change={priceChange24h} detailPage={true} />
         </Box>
       </Box>
-      <StyledButton onClick={() => handleOpenModal(coin.id)}>
-        {isSmallScreen ? <AddIcon /> : "Add Transation"}
-      </StyledButton>
+      {user && (
+        <StyledButton onClick={() => handleOpenModal(coin.id)}>
+          {isSmallScreen ? <AddIcon /> : "Add Transation"}
+        </StyledButton>
+      )}
     </Box>
   );
 };

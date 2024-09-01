@@ -113,3 +113,17 @@ export interface PortfolioCoin {
   name: string;
   quantity: number;
 }
+
+export interface PortfolioContextProps {
+  portfolioCoins: PortfolioCoin[];
+  coins: CoinListProps[];
+  loading: boolean;
+  fetchedCoins: PortfolioCoin[];
+  fetchPortfolioCoins: (
+    userUid: string
+  ) => Promise<PortfolioCoin[] | undefined>;
+  handleAddTransaction: (event: React.FormEvent) => void;
+  handleRemoveCoin: (coinId: string) => void;
+  calculateTotalBalance: () => number;
+  calculate24HourChangePercentage: () => number;
+}

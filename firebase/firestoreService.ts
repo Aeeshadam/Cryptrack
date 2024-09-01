@@ -9,18 +9,24 @@ import {
 } from "firebase/firestore";
 import { PortfolioCoin } from "../types";
 
-export const addCoinToPortfolio = async (coin: PortfolioCoin) => {
+export const addCoinToPortfolio = async (
+  userId: string,
+  coin: PortfolioCoin
+) => {
   try {
-    const coinRef = doc(db, "portfolio", coin.id);
+    const coinRef = doc(db, "users", userId, "portfolio", coin.id);
     await setDoc(coinRef, coin);
   } catch (e) {
     console.error("Error adding coin: ", e);
   }
 };
 
-export const updateCoinInPortfolio = async (coin: PortfolioCoin) => {
+export const updateCoinInPortfolio = async (
+  userId: string,
+  coin: PortfolioCoin
+) => {
   try {
-    const coinRef = doc(db, "portfolio", coin.id);
+    const coinRef = doc(db, "users", userId, "portfolio", coin.id);
     await updateDoc(coinRef, {
       quantity: coin.quantity,
     });
@@ -29,9 +35,12 @@ export const updateCoinInPortfolio = async (coin: PortfolioCoin) => {
   }
 };
 
-export const getPortfolioCoins = async (): Promise<PortfolioCoin[]> => {
+export const getPortfolioCoins = async (
+  userId: string
+): Promise<PortfolioCoin[]> => {
   try {
-    const coinsCollection = collection(db, "portfolio");
+    const userDocRef = doc(db, "users", userId);
+    const coinsCollection = collection(userDocRef, "portfolio");
     const coinsSnapshot = await getDocs(coinsCollection);
     const coinsList = coinsSnapshot.docs.map((doc) => {
       const data = doc.data() as PortfolioCoin;
@@ -44,9 +53,12 @@ export const getPortfolioCoins = async (): Promise<PortfolioCoin[]> => {
   }
 };
 
-export const removeCoinFromPortfolio = async (coinId: string) => {
+export const removeCoinFromPortfolio = async (
+  userId: string,
+  coinId: string
+) => {
   try {
-    const coinRef = doc(db, "portfolio", coinId);
+    const coinRef = doc(db, "users", userId, "portfolio", coinId);
     await deleteDoc(coinRef);
   } catch (e) {
     console.error("Error removing coin: ", e);

@@ -1,26 +1,33 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, useTheme, IconButton } from "@mui/material";
 import { Box } from "@mui/material";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { SummaryContentContainer } from "../styles/SummaryCardStyles";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ChipButton from "./ChipButton";
 import { StyledButton } from "./StyledButton";
 import AddIcon from "@mui/icons-material/Add";
 import { formatCurrency } from "@/utils/utils";
-import usePortfolio from "@/hooks/usePortfolio";
+import { usePortfolio } from "@/contexts/PortfolioContext";
 import { useTransaction } from "@/contexts/TransactionContext";
 
 const PortfolioBalance = () => {
+  const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+
   const { calculateTotalBalance, calculate24HourChangePercentage } =
     usePortfolio();
-
   const { handleOpenModal } = useTransaction();
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const toggleBalanceVisibility = () => {
+    setIsBalanceVisible(!isBalanceVisible);
+  };
+
   return (
     <Box
       sx={{
@@ -41,11 +48,16 @@ const PortfolioBalance = () => {
           <Typography gutterBottom>Current Balance</Typography>
           <SummaryContentContainer>
             <Typography variant="h3">
-              {formatCurrency(calculateTotalBalance() || 0)}
+              {isBalanceVisible
+                ? formatCurrency(calculateTotalBalance() || 0)
+                : "*****"}
             </Typography>
-            <VisibilityIcon
+            <IconButton
+              onClick={toggleBalanceVisibility}
               sx={{ color: "text.secondary", fontSize: "30px" }}
-            />
+            >
+              {isBalanceVisible ? <VisibilityIcon /> : <VisibilityOffIcon />}
+            </IconButton>
           </SummaryContentContainer>
           <Box sx={{ display: "flex", alignItems: "center", gap: "1rem" }}>
             <ChipButton
@@ -59,7 +71,7 @@ const PortfolioBalance = () => {
         </CardContent>
       </Card>
       <StyledButton onClick={() => handleOpenModal("")}>
-        {isSmallScreen ? <AddIcon /> : "Add Transation"}
+        {isSmallScreen ? <AddIcon /> : "Add Transaction"}
       </StyledButton>
     </Box>
   );

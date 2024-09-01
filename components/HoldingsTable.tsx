@@ -17,7 +17,7 @@ import { useSelector } from "react-redux";
 import { AppState } from "../store/store";
 import { formatCurrency } from "@/utils/utils";
 import { PortfolioCoin } from "@/types/index";
-import usePortfolio from "@/hooks/usePortfolio";
+import { usePortfolio } from "@/contexts/PortfolioContext";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 import {
