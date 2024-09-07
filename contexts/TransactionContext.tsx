@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 import { createContext, useContext, useState, ReactNode } from "react";
-import { TransactionContextProps } from "@/types";
+import { TransactionContextProps, TransactionType } from "@/types";
 import { useSelector } from "react-redux";
 import { AppState } from "@/store/store";
 
@@ -14,7 +14,8 @@ export const TransactionProvider = ({ children }: { children: ReactNode }) => {
   const [quantity, setQuantity] = useState(0);
   const [pricePerCoin, setPricePerCoin] = useState(0);
   const [selectedCoin, setSelectedCoin] = useState<string | null>(null);
-  const [transactionType, setTransactionType] = useState("buy");
+  const [transactionType, setTransactionType] =
+    useState<TransactionType | null>("buy");
   const coins = useSelector((state: AppState) => state.coinList.coins);
 
   useEffect(() => {
@@ -39,7 +40,7 @@ export const TransactionProvider = ({ children }: { children: ReactNode }) => {
     event: React.MouseEvent<HTMLElement>,
     newTransactionType: string | null
   ) => {
-    if (newTransactionType !== null) {
+    if (newTransactionType === "buy" || newTransactionType === "sell") {
       setTransactionType(newTransactionType);
     }
   };

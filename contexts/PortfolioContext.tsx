@@ -8,7 +8,7 @@ import {
   updateCoinInPortfolio,
   removeCoinFromPortfolio,
 } from "@/firebase/firestoreService";
-import { PortfolioCoin, PortfolioContextProps } from "@/types";
+import { PortfolioCoin, PortfolioContextProps, Transaction } from "@/types";
 import { AppDispatch, AppState } from "@/store/store";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTransaction } from "@/contexts/TransactionContext";
@@ -22,7 +22,6 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
-  const [fetchedCoins, setFetchedCoins] = useState<PortfolioCoin[]>([]);
   const dispatch = useDispatch<AppDispatch>();
   const portfolioCoins = useSelector(
     (state: AppState) => state.portfolio.coins
@@ -35,6 +34,7 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({
     quantity,
     setQuantity,
     setPricePerCoin,
+    pricePerCoin,
     transactionType,
     setOpenModal,
   } = useTransaction();
@@ -107,6 +107,14 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({
         const existingPortfolioCoin = portfolioCoins.find(
           (c) => c.id === coin.id
         );
+
+        const newTransaction: Transaction = {
+          quantity,
+          price: pricePerCoin,
+          type: transactionType,
+          timestamp: Date.now(),
+        };
+
         const updatedQuantity =
           transactionType === "buy"
             ? (existingPortfolioCoin?.quantity || 0) + quantity
@@ -116,8 +124,12 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({
           id: coin.id,
           name: coin.name,
           quantity: updatedQuantity,
+          transactions: existingPortfolioCoin
+            ? [...existingPortfolioCoin.transactions, newTransaction]
+            : [newTransaction],
         };
         dispatch(addCoin(updatedCoin));
+
         if (existingPortfolioCoin) {
           updateCoinInPortfolio(user.uid, updatedCoin);
         } else {
@@ -125,6 +137,7 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({
         }
       }
     }
+
     setOpenModal(false);
     setSelectedCoin("");
     setQuantity(0);
@@ -141,13 +154,11 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  //loading portfolio coins
   useEffect(() => {
     const fetchCoins = async () => {
       if (user) {
         try {
-          const coins = await fetchPortfolioCoins(user.uid);
-          setFetchedCoins(coins || []);
+          await fetchPortfolioCoins(user.uid);
         } catch (error) {
           console.error("Error fetching portfolio coins: ", error);
         } finally {
@@ -156,7 +167,7 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({
       }
     };
     fetchCoins();
-  }, [user, handleAddTransaction, handleRemoveCoin]);
+  }, [user]);
 
   return (
     <PortfolioContext.Provider
@@ -164,7 +175,6 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({
         portfolioCoins,
         coins,
         loading,
-        fetchedCoins,
         fetchPortfolioCoins,
         handleAddTransaction,
         handleRemoveCoin,

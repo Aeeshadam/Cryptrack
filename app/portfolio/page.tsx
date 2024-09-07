@@ -8,15 +8,16 @@ import { usePortfolio } from "@/contexts/PortfolioContext";
 import LoadingSpinner from "@/components/LoadingSpinner";
 
 const Page = () => {
-  const { fetchedCoins, loading } = usePortfolio();
+  const { portfolioCoins, loading } = usePortfolio();
 
   if (loading) {
     return <LoadingSpinner />;
   }
 
-  if (fetchedCoins.length === 0) {
+  if (portfolioCoins.length === 0) {
     return <EmptyPortfolio />;
   }
+
   return (
     <Box>
       <PortfolioBalance />

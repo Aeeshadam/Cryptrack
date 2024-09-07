@@ -29,6 +29,7 @@ export const updateCoinInPortfolio = async (
     const coinRef = doc(db, "users", userId, "portfolio", coin.id);
     await updateDoc(coinRef, {
       quantity: coin.quantity,
+      transactions: coin.transactions,
     });
   } catch (e) {
     console.error("Error updating coin: ", e);

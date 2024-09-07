@@ -4,19 +4,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchCoinDetails = createAsyncThunk<CoinDetailsProps, string>(
   "coin/getCoinDetails",
   async (slug) => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "x-cg-demo-api-key": "CG-TubDjhxJxwyEcPmgwD2UPRJH",
-      },
-    };
-
     try {
-      const response = await fetch(
-        `https://api.coingecko.com/api/v3/coins/${slug}?localization=false&community_data=false&developer_data=false`,
-        options
-      );
+      const response = await fetch(`/api/coinDetails?slug=${slug}`, {
+        method: "GET",
+      });
       if (!response.ok) {
         throw new Error("Failed to fetch coin details");
       }

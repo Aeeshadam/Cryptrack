@@ -10,11 +10,15 @@ import { useEffect } from "react";
 import MarketStats from "@/components/MarketStats";
 import About from "@/components/About";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import TransactionHistory from "@/components/TransactionHistory";
 
 const CoinDetailPage = ({ params }: { params: ParamsProps }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { loading, error } = useSelector(
     (state: AppState) => state.coinDetails
+  );
+  const coinInPortfolio = useSelector((state: AppState) =>
+    state.portfolio.coins.find((coin) => coin.id === params.slug)
   );
 
   useEffect(() => {
@@ -36,6 +40,7 @@ const CoinDetailPage = ({ params }: { params: ParamsProps }) => {
       <CoinDetail />
       <MarketStats />
       <About />
+      {coinInPortfolio && <TransactionHistory coinId={params.slug} />}
     </Box>
   );
 };

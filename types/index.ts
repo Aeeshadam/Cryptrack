@@ -54,14 +54,15 @@ export interface SearchContextProps {
   handleOpenSearch: () => void;
 }
 
+export type TransactionType = "buy" | "sell";
 export interface TransactionContextProps {
   openModal: boolean;
   quantity: number;
   setQuantity: (quantity: number) => void;
   setOpenModal: (open: boolean) => void;
   handleOpenModal: (coinId: string) => void;
-  transactionType: string;
-  setTransactionType: (type: string) => void;
+  transactionType: TransactionType | null;
+  setTransactionType: (type: TransactionType | null) => void;
   calculateTotal: () => string | undefined;
   handleTransactionTypeChange: (
     event: React.MouseEvent<HTMLElement>,
@@ -108,17 +109,23 @@ export interface CoinDetailsState {
   error: null | string;
 }
 
+export interface Transaction {
+  quantity: number;
+  price: number;
+  type: TransactionType | null;
+  timestamp: number;
+}
 export interface PortfolioCoin {
   id: string;
   name: string;
   quantity: number;
+  transactions: Transaction[];
 }
 
 export interface PortfolioContextProps {
   portfolioCoins: PortfolioCoin[];
   coins: CoinListProps[];
   loading: boolean;
-  fetchedCoins: PortfolioCoin[];
   fetchPortfolioCoins: (
     userUid: string
   ) => Promise<PortfolioCoin[] | undefined>;

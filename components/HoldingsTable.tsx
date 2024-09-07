@@ -18,6 +18,7 @@ import { AppState } from "../store/store";
 import { formatCurrency } from "@/utils/utils";
 import { PortfolioCoin } from "@/types/index";
 import { usePortfolio } from "@/contexts/PortfolioContext";
+import { useTransaction } from "@/contexts/TransactionContext";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 import {
@@ -41,6 +42,7 @@ const HoldingsTable = () => {
   const handleRowClick = (coinId: string) => {
     router.push(`/coin/${coinId}`);
   };
+  const { handleOpenModal } = useTransaction();
 
   const { handleRemoveCoin } = usePortfolio();
   const coinList = useSelector((state: AppState) => state.coinList.coins);
@@ -124,7 +126,7 @@ const HoldingsTable = () => {
                           event: React.MouseEvent<SVGSVGElement, MouseEvent>
                         ) => {
                           event.stopPropagation();
-                          alert("Add clicked");
+                          handleOpenModal(coin.id);
                         }}
                       />
                       <ClearIcon
