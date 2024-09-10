@@ -12,10 +12,12 @@
   "dependencies": {
     "@mui/icons-material": "^5.16.4",
     "axios": "^1.7.3",
+    "chart.js": "^4.4.4",
     "firebase": "^10.12.4",
     "next": "14.2.5",
     "next-redux-wrapper": "^8.1.0",
     "react": "^18",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18",
     "redux": "^5.0.1"
   },

@@ -1,33 +1,29 @@
 import { NextResponse } from "next/server";
 import axios from "axios";
+import { CoinListProps } from "@/types";
 
-let cachedData: any[] = [];
+let cachedData: CoinListProps[] = [];
 let cacheTime = 0;
 
 const fetchCryptoData = async () => {
-  const allCoins: any[] = [];
+  const totalPages = 5;
   const perPage = 200;
-  let page = 1;
-  let hasMore = true;
 
-  while (hasMore) {
-    const options = {
-      method: "GET",
-      url: `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=${perPage}&page=${page}`,
-      headers: {
-        accept: "application/json",
-        "x-cg-demo-api-key": process.env.COINGECKO_API_KEY,
-      },
-    };
-    const response = await axios.request(options);
-    const data = response.data;
-    allCoins.push(...data);
-    if (page >= 5) {
-      hasMore = false;
-    } else {
-      page++;
-    }
-  }
+  const headers = {
+    accept: "application/json",
+    "x-cg-demo-api-key": process.env.COINGECKO_API_KEY,
+  };
+
+  const pagePromises = Array.from({ length: totalPages }, (_, i) =>
+    axios.get(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&per_page=${perPage}&page=${
+        i + 1
+      }`,
+      { headers }
+    )
+  );
+  const results = await Promise.all(pagePromises);
+  const allCoins = results.flatMap((result) => result.data);
   return allCoins;
 };
 

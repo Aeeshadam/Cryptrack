@@ -13,9 +13,24 @@ const About = () => {
   }
 
   return (
-    <Box bgcolor="secondary.main" marginY="2rem" padding="2rem">
+    <Box
+      bgcolor="secondary.main"
+      marginY="2rem"
+      width="100%"
+      sx={{ padding: { sm: "1rem", md: "2rem", xs: "1rem" } }}
+    >
       <Typography variant="h3">About</Typography>
-      <Typography variant="body1" color="grey">
+      <Typography
+        variant="body1"
+        color="grey"
+        sx={{
+          wordWrap: "break-word",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          maxWidth: "100%",
+          marginTop: "0.5rem",
+        }}
+      >
         {about}
       </Typography>
       <Typography marginTop="2rem" variant="subtitle1" fontWeight="600">

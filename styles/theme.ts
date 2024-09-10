@@ -35,7 +35,7 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#dfbf7b;",
+      main: "#dfbf7b",
       light: "#d8a353",
       dark: "#685f4c",
     },

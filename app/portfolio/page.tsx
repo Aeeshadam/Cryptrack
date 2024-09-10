@@ -6,6 +6,7 @@ import HoldingsTable from "@/components/HoldingsTable";
 import EmptyPortfolio from "@/components/EmptyPortfolio";
 import { usePortfolio } from "@/contexts/PortfolioContext";
 import LoadingSpinner from "@/components/LoadingSpinner";
+import DoughnutChart from "@/components/DoughnutChart";
 
 const Page = () => {
   const { portfolioCoins, loading } = usePortfolio();
@@ -21,6 +22,7 @@ const Page = () => {
   return (
     <Box>
       <PortfolioBalance />
+      <DoughnutChart portfolioCoins={portfolioCoins} />
       <HoldingsTable />
     </Box>
   );

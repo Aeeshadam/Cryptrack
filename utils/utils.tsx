@@ -11,3 +11,12 @@ export const getInitials = (name: string) => {
   const [firstName, lastName] = name.split(" ");
   return `${firstName.charAt(0)}${lastName ? lastName.charAt(0) : ""}`;
 };
+
+export const generateRandomColor = () => {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};

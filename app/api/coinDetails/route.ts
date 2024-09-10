@@ -5,8 +5,6 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const slug = searchParams.get("slug");
 
-  console.log("Received slug:", slug);
-
   if (!slug) {
     return NextResponse.json({ error: "Invalid slug" }, { status: 400 });
   }

@@ -6,7 +6,7 @@ import {
   ListItemAvatar,
   Stack,
 } from "@mui/material";
-import React from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { AppState } from "@/store/store";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -17,8 +17,11 @@ interface TransactionHistoryProps {
   coinId: string;
 }
 const TransactionHistory: React.FC<TransactionHistoryProps> = ({ coinId }) => {
-  const transactions = useSelector((state: AppState) =>
-    state.portfolio.coins
+  const portfolioCoins = useSelector(
+    (state: AppState) => state.portfolio.coins
+  );
+  const transactions = useMemo(() => {
+    return portfolioCoins
       .filter((coin) => coin.id === coinId)
       .flatMap((coin) =>
         coin.transactions.map((t) => ({
@@ -26,8 +29,8 @@ const TransactionHistory: React.FC<TransactionHistoryProps> = ({ coinId }) => {
           id: coin.id,
           coinName: coin.name,
         }))
-      )
-  );
+      );
+  }, [portfolioCoins, coinId]);
 
   return (
     <Box>

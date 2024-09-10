@@ -134,3 +134,13 @@ export interface PortfolioContextProps {
   calculateTotalBalance: () => number;
   calculate24HourChangePercentage: () => number;
 }
+
+type HistoricDataItem = [number, number];
+
+export type HistoricDataProps = HistoricDataItem[];
+
+export interface HistoricDataState {
+  data: HistoricDataProps;
+  loading: boolean;
+  error: string;
+}
