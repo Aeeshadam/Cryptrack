@@ -44,9 +44,8 @@ const HoldingsTable = () => {
   };
   const { handleOpenModal } = useTransaction();
 
-  const { handleRemoveCoin } = usePortfolio();
+  const { handleRemoveCoin, portfolioCoins } = usePortfolio();
   const coinList = useSelector((state: AppState) => state.coinList.coins);
-  const potfolioCoins = useSelector((state: AppState) => state.portfolio.coins);
 
   return (
     <>
@@ -72,7 +71,7 @@ const HoldingsTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {potfolioCoins.map((portfolioCoin: PortfolioCoin) => {
+            {portfolioCoins.map((portfolioCoin: PortfolioCoin) => {
               const coin = coinList.find(
                 (coin: CoinListProps) => coin.id === portfolioCoin?.id
               );

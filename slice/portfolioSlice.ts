@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { PortfolioCoin } from "@/types";
-
-interface PortfolioState {
-  coins: PortfolioCoin[];
-}
+import { PortfolioCoin, PortfolioState, Transaction } from "@/types";
 
 const initialState: PortfolioState = {
   coins: [],
@@ -19,6 +15,15 @@ const portfolioSlice = createSlice({
       );
       if (existingCoin) {
         existingCoin.quantity = action.payload.quantity;
+        const transactionMap = new Map<number, Transaction>();
+        existingCoin.transactions.forEach((transaction) =>
+          transactionMap.set(transaction.timestamp, transaction)
+        );
+        action.payload.transactions.forEach((transaction) =>
+          transactionMap.set(transaction.timestamp, transaction)
+        );
+
+        existingCoin.transactions = Array.from(transactionMap.values());
       } else {
         state.coins.push(action.payload);
       }

@@ -13,7 +13,6 @@ import { CoinListProps } from "../types/index";
 import { useCoinsData } from "@/hooks/useCoinsData";
 import { formatCurrency } from "@/utils/utils";
 import LoadingSpinner from "./LoadingSpinner";
-import { useTransaction } from "@/contexts/TransactionContext";
 import { useMediaQuery, useTheme } from "@mui/material";
 
 import {

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import {
   TextField,
   Typography,
@@ -18,6 +19,7 @@ const SignUpForm = () => {
   const [localError, setLocalError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [openSnackbar, setOpenSnackbar] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     setError("");
@@ -40,7 +42,7 @@ const SignUpForm = () => {
       setOpenSnackbar(true);
 
       setTimeout(() => {
-        window.location.href = "/";
+        router.push("/");
       }, 1000);
     }
   };

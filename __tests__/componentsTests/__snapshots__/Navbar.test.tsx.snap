@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar should render correctly 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-i9gxme"
+  >
+    <header
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-elevation4 MuiAppBar-root MuiAppBar-colorPrimary MuiAppBar-positionStatic css-1q241bj-MuiPaper-root-MuiAppBar-root"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-gutters MuiToolbar-regular css-188m7n6-MuiToolbar-root"
+        style="padding: 0px;"
+      >
+        <a
+          href="/"
+        >
+          <img
+            alt="Logo"
+            data-nimg="1"
+            decoding="async"
+            height="50"
+            loading="lazy"
+            src="/logo.svg"
+            style="color: transparent;"
+            width="150"
+          />
+        </a>
+        <div
+          class="MuiBox-root css-i9gxme"
+        />
+        <div
+          class="MuiBox-root css-otkr09"
+        >
+          <div
+            class="css-hnq50b"
+          >
+            <div
+              class="css-1u2w42g"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+                data-testid="SearchIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiInputBase-root MuiInputBase-colorPrimary Mui-readOnly MuiInputBase-readOnly css-621rcj-MuiInputBase-root"
+            >
+              <input
+                aria-label="search"
+                class="MuiInputBase-input Mui-readOnly MuiInputBase-readOnly css-yz9k0d-MuiInputBase-input"
+                placeholder="Search…"
+                readonly=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiBox-root css-1kbdbw3"
+        >
+          <div
+            class="css-4bygs5"
+            data-testid="mobile-search"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="SearchIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14"
+              />
+            </svg>
+          </div>
+        </div>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeSmall MuiButton-textSizeSmall MuiButton-colorPrimary css-1ia8w74-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          Get Started
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </header>
+  </div>
+</div>
+`;

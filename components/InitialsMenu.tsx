@@ -1,5 +1,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
+import { useRouter } from "next/navigation";
 import Menu from "@mui/material/Menu";
 import Box from "@mui/material/Box";
 import MenuItem from "@mui/material/MenuItem";
@@ -8,6 +9,7 @@ import { useAuth } from "@/contexts/AuthContext";
 export default function InitialsMenu({ name }: { name: string }) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
+  const router = useRouter();
   const { logOut } = useAuth();
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -16,7 +18,7 @@ export default function InitialsMenu({ name }: { name: string }) {
   const handleLogOut = async () => {
     await logOut();
     setAnchorEl(null);
-    window.location.href = "/sign-in";
+    router.push("/sign-in");
   };
 
   const handleClose = () => {

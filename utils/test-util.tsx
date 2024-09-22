@@ -4,8 +4,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
 import { AppState } from "@/store/store";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import { useTransaction } from "@/contexts/TransactionContext";
+import paginationReducer from "@/slice/paginationSlice";
+import coinListReducer from "@/slice/coinListSlice";
+import coinDetailsReducer from "@/slice/coinDetailsSlice";
+import portfolioReducer from "@/slice/portfolioSlice";
+import historicDataReducer from "@/slice/historicDataSlice";
 
-const defaultState: Partial<AppState> = {
+const defaultState: AppState = {
   coinList: {
     coins: [],
     loading: false,
@@ -19,6 +25,14 @@ const defaultState: Partial<AppState> = {
     coin: {},
     loading: false,
     error: null,
+  },
+  portfolio: {
+    coins: [],
+  },
+  historicData: {
+    data: [],
+    loading: false,
+    error: "",
   },
 };
 
@@ -35,9 +49,11 @@ export function renderWithRedux(
     store ||
     configureStore({
       reducer: {
-        coinList: (state = defaultState.coinList, action) => state,
-        pagination: (state = defaultState.pagination, action) => state,
-        coinDetails: (state = defaultState.coinDetails, action) => state,
+        coinList: coinListReducer,
+        pagination: paginationReducer,
+        coinDetails: coinDetailsReducer,
+        portfolio: portfolioReducer,
+        historicData: historicDataReducer,
       },
       preloadedState: {
         ...defaultState,
@@ -63,3 +79,26 @@ export function renderWithRedux(
     store: testStore,
   };
 }
+
+export const mockUseTransaction = (overrides = {}) => {
+  const defaultValues = {
+    openModal: false,
+    setOpenModal: jest.fn(),
+    handleOpenModal: jest.fn(),
+    transactionType: "buy",
+    setTransactionType: jest.fn(),
+    calculateTotal: jest.fn(() => "0.00"),
+    handleTransactionTypeChange: jest.fn(),
+    quantity: 0,
+    setQuantity: jest.fn(),
+    selectedCoin: null,
+    setSelectedCoin: jest.fn(),
+    pricePerCoin: 0,
+    setPricePerCoin: jest.fn(),
+  };
+
+  (useTransaction as jest.Mock).mockReturnValue({
+    ...defaultValues,
+    ...overrides,
+  });
+};

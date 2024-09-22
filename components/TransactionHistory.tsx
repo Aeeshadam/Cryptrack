@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Typography,
@@ -20,22 +21,23 @@ const TransactionHistory: React.FC<TransactionHistoryProps> = ({ coinId }) => {
   const portfolioCoins = useSelector(
     (state: AppState) => state.portfolio.coins
   );
-  const transactions = useMemo(() => {
-    return portfolioCoins
-      .filter((coin) => coin.id === coinId)
-      .flatMap((coin) =>
-        coin.transactions.map((t) => ({
-          ...t,
-          id: coin.id,
-          coinName: coin.name,
-        }))
-      );
-  }, [portfolioCoins, coinId]);
+  const transactions = portfolioCoins
+    .filter((coin) => coin.id === coinId)
+    .flatMap((coin) =>
+      coin.transactions.map((t) => ({
+        ...t,
+        id: coin.id,
+        coinName: coin.name,
+      }))
+    );
 
   return (
     <Box>
       <Typography variant="h5">Transaction History</Typography>
-      <List sx={{ backgroundColor: "secondary.main", marginY: "2rem" }}>
+      <List
+        sx={{ backgroundColor: "secondary.main", marginY: "2rem" }}
+        data-testid="transaction-list"
+      >
         {transactions.map((transaction) => (
           <ListItem key={transaction.timestamp}>
             <ListItemAvatar>

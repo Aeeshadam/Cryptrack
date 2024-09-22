@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { TextField, Typography, Container, Box } from "@mui/material";
 import { StyledButton } from "@/components/StyledButton";
 import { useAuth } from "@/contexts/AuthContext";
@@ -8,6 +9,7 @@ const SignInForm = () => {
   const { signIn, error, loading, setError } = useAuth();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     setError("");
@@ -19,7 +21,7 @@ const SignInForm = () => {
     const success = await signIn(email, password);
 
     if (success) {
-      window.location.href = "/";
+      router.push("/");
     }
   };
 

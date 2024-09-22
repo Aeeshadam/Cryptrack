@@ -17,6 +17,7 @@ export default function PaginationRounded() {
     page: number
   ) => {
     dispatch(setCurrentPage(page));
+    console.log("Current Page: ", page);
   };
   return (
     <Stack spacing={2}>

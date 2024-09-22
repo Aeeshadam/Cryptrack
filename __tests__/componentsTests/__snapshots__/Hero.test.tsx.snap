@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hero should render correctly 1`] = `
+<div>
+  <section
+    class="css-1ptp9m9"
+  >
+    <div
+      class="css-1vyekul"
+    >
+      <div
+        class="css-1ibemvj"
+      >
+        <h1
+          class="MuiTypography-root MuiTypography-h1 css-3h6rmx-MuiTypography-root"
+        >
+          The Ultimate
+          <span
+            class="css-1bm9945"
+          >
+             Crypto Portfolio 
+          </span>
+           Tracker
+        </h1>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-colorPrimary css-1944k86-MuiButtonBase-root-MuiButton-root"
+          tabindex="0"
+          type="button"
+        >
+          Create Portfolio
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+      <div
+        class="css-frdxje"
+      >
+        <img
+          alt="hero"
+          data-nimg="1"
+          decoding="async"
+          height="400"
+          loading="lazy"
+          src="/_next/image?url=%2Fhero.png&w=828&q=75"
+          srcset="/_next/image?url=%2Fhero.png&w=640&q=75 1x, /_next/image?url=%2Fhero.png&w=828&q=75 2x"
+          style="color: transparent; width: 100%; height: auto; object-fit: contain;"
+          width="400"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiBox-root css-jhoeoz"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-12 css-1fh410u-MuiGrid-root"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+        >
+          <img
+            alt="Bitcoin Icon"
+            data-nimg="1"
+            decoding="async"
+            height="80"
+            loading="lazy"
+            src="/Bitcoin.svg"
+            style="color: transparent;"
+            width="80"
+          />
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+        >
+          <img
+            alt="BNB Icon"
+            data-nimg="1"
+            decoding="async"
+            height="80"
+            loading="lazy"
+            src="/Bnb.svg"
+            style="color: transparent;"
+            width="80"
+          />
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+        >
+          <img
+            alt="Ethereum Icon"
+            data-nimg="1"
+            decoding="async"
+            height="80"
+            loading="lazy"
+            src="/Ethereum.svg"
+            style="color: transparent;"
+            width="80"
+          />
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-true css-1vd824g-MuiGrid-root"
+        >
+          <img
+            alt="Tether Icon"
+            data-nimg="1"
+            decoding="async"
+            height="80"
+            loading="lazy"
+            src="/Tether.svg"
+            style="color: transparent;"
+            width="80"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

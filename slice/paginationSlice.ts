@@ -10,7 +10,7 @@ const paginationSlice = createSlice({
   name: "pagination",
   initialState,
   reducers: {
-    setCurrentPage: (state, action: PayloadAction<number>) => {
+    setCurrentPage(state, action: PayloadAction<number>) {
       state.currentPage = action.payload;
     },
   },

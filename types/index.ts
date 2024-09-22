@@ -144,3 +144,6 @@ export interface HistoricDataState {
   loading: boolean;
   error: string;
 }
+export interface PortfolioState {
+  coins: PortfolioCoin[];
+}

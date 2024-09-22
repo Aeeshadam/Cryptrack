@@ -67,7 +67,10 @@ const CoinDetail = () => {
         </Box>
       </Box>
       {user && (
-        <StyledButton onClick={() => handleOpenModal(coin.id)}>
+        <StyledButton
+          onClick={() => handleOpenModal(coin.id)}
+          data-testid="add button"
+        >
           {isSmallScreen ? <AddIcon /> : "Add Transation"}
         </StyledButton>
       )}

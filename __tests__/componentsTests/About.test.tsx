@@ -5,7 +5,7 @@ import { renderWithRedux } from "@/utils/test-util";
 import { AppState } from "@/store/store";
 
 describe("About Component", () => {
-  it("renders correctly with market data less than 10", () => {
+  it("renders correctly with market less than 10", () => {
     const currentState: Partial<AppState> = {
       coinDetails: {
         coin: {

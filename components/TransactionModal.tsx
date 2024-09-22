@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import "../styles/globals.css";
 import Image from "next/image";
 import MenuItem from "@mui/material/MenuItem";
 import Box from "@mui/material/Box";
@@ -14,6 +13,7 @@ import { StyledButton } from "./StyledButton";
 import { style } from "@/styles/ModalStyles";
 import { usePortfolio } from "@/contexts/PortfolioContext";
 import { useTransaction } from "@/contexts/TransactionContext";
+import { FormControl, Select } from "@mui/material";
 
 const TransactionModal = () => {
   const {
@@ -67,80 +67,83 @@ const TransactionModal = () => {
             <ToggleButton value="buy">BUY</ToggleButton>
             <ToggleButton value="sell">SELL</ToggleButton>
           </ToggleButtonGroup>
+          <FormControl fullWidth>
+            <Select
+              fullWidth
+              required
+              label="Cryptocurrency"
+              data-testid="coin-select"
+              variant="outlined"
+              sx={{ mb: 2 }}
+              value={selectedCoin || ""}
+              onChange={(e) => setSelectedCoin(e.target.value)}
+            >
+              {transactionCoins.map((coin) => (
+                <MenuItem
+                  key={coin.id}
+                  value={coin.id}
+                  data-testid={`coin-item-${coin.id}`}
+                  sx={{ backgroundColor: "transparent" }}
+                >
+                  <Box display="flex" alignItems="center" gap="8px">
+                    <Image
+                      src={coin.image}
+                      alt={coin.name}
+                      width={30}
+                      height={30}
+                    />
+                    {coin.name}
+                  </Box>
+                </MenuItem>
+              ))}
+            </Select>
 
-          <TextField
-            fullWidth
-            required
-            label="Cryptocurrency"
-            select
-            variant="outlined"
-            sx={{ mb: 2 }}
-            value={selectedCoin || ""}
-            onChange={(e) => setSelectedCoin(e.target.value)}
-          >
-            {transactionCoins.map((coin) => (
-              <MenuItem
-                key={coin.id}
-                value={coin.id}
-                sx={{ backgroundColor: "transparent" }}
-              >
-                <Box display="flex" alignItems="center" gap="8px">
-                  <Image
-                    src={coin.image}
-                    alt={coin.name}
-                    width={30}
-                    height={30}
-                  />
-                  {coin.name}
-                </Box>
-              </MenuItem>
-            ))}
-          </TextField>
+            <TextField
+              fullWidth
+              required
+              placeholder="please enter quantity"
+              label="Quantity"
+              value={quantity}
+              type="number"
+              onChange={(e) => setQuantity(parseFloat(e.target.value))}
+              variant="outlined"
+              sx={{ mb: 2 }}
+              className="no-spinner"
+            />
+            <TextField
+              fullWidth
+              value={pricePerCoin}
+              data-testid="price"
+              onChange={(e) => setPricePerCoin(parseFloat(e.target.value))}
+              label="Price per coin"
+              type="number"
+              variant="outlined"
+              sx={{ mb: 2 }}
+              className="no-spinner"
+            />
 
-          <TextField
-            fullWidth
-            required
-            placeholder="please enter a number"
-            label="Quantity"
-            value={quantity}
-            type="number"
-            onChange={(e) => setQuantity(parseFloat(e.target.value))}
-            variant="outlined"
-            sx={{ mb: 2 }}
-            className="no-spinner"
-          />
-          <TextField
-            fullWidth
-            value={pricePerCoin}
-            onChange={(e) => setPricePerCoin(parseFloat(e.target.value))}
-            label="Price per coin"
-            type="number"
-            variant="outlined"
-            sx={{ mb: 2 }}
-            className="no-spinner"
-          />
-
-          <TextField
-            fullWidth
-            label={
-              transactionType === "buy"
-                ? "Total Spent in USD"
-                : "Total Received in USD"
-            }
-            value={calculateTotal()}
-            type="number"
-            InputProps={{
-              readOnly: true,
-            }}
-            variant="outlined"
-            sx={{ mb: 2 }}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <StyledButton fullWidth type="submit">
-            Add Transaction
-          </StyledButton>
+            <TextField
+              fullWidth
+              label={
+                transactionType === "buy"
+                  ? "Total Spent in USD"
+                  : "Total Received in USD"
+              }
+              value={calculateTotal()}
+              type="number"
+              InputProps={{
+                readOnly: true,
+              }}
+              variant="outlined"
+              sx={{ mb: 2 }}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <StyledButton fullWidth type="submit">
+              Add Transaction
+            </StyledButton>
+          </FormControl>
         </Box>
       </Modal>
     </Box>

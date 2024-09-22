@@ -10,6 +10,9 @@ module.exports = {
     "^.+\\.(ts|tsx)$": "babel-jest",
     "^.+\\.(js|jsx)$": "babel-jest",
   },
+  transformIgnorePatterns: [
+    "node_modules/(?!(jest-)?@mui|@babel/runtime|@mui/system|@mui/material|@mui/icons-material|lodash-es)",
+  ],
   moduleFileExtensions: ["ts", "tsx", "js", "jsx", "json", "node"],
   testPathIgnorePatterns: ["<rootDir>/.next/", "<rootDir>/node_modules/"],
 };

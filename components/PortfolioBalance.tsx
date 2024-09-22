@@ -28,6 +28,9 @@ const PortfolioBalance = () => {
     setIsBalanceVisible(!isBalanceVisible);
   };
 
+  const totalBalance = formatCurrency(calculateTotalBalance());
+  const stars = Array(totalBalance.length).fill("*").join("");
+
   return (
     <Box
       sx={{
@@ -47,13 +50,12 @@ const PortfolioBalance = () => {
         <CardContent>
           <Typography gutterBottom>Current Balance</Typography>
           <SummaryContentContainer>
-            <Typography variant="h3">
-              {isBalanceVisible
-                ? formatCurrency(calculateTotalBalance() || 0)
-                : "*****"}
+            <Typography variant="h3" data-testid="balance-text">
+              {isBalanceVisible ? totalBalance || 0 : stars}
             </Typography>
             <IconButton
               onClick={toggleBalanceVisibility}
+              data-testid="visibility-button"
               sx={{ color: "text.secondary", fontSize: "30px" }}
             >
               {isBalanceVisible ? <VisibilityIcon /> : <VisibilityOffIcon />}

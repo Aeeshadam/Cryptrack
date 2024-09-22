@@ -1,9 +1,9 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import MarketStats from "@/components/MarketStats";
-import useMarketStatsData from "@/hooks/MarketStatsData";
+import useMarketStatsData from "@/hooks/useMarketStatsData";
 
-jest.mock("@/hooks/MarketStatsData");
+jest.mock("@/hooks/useMarketStatsData");
 
 describe("MarketStats Component", () => {
   afterEach(() => {

@@ -3,6 +3,11 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { useSearch } from "@/contexts/SearchContext";
 import SearchComponent from "@/components/SearchComponent";
 import SearchModal from "@/components/SearchModal";
+import { useRouter } from "next/navigation";
+
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+}));
 
 jest.mock("@/contexts/SearchContext");
 
@@ -15,6 +20,15 @@ const baseMockState = {
   handleOpenSearch: jest.fn(),
 };
 
+const mockRouter = {
+  push: jest.fn(),
+  prefetch: jest.fn(),
+  route: "/",
+  pathname: "/",
+  query: {},
+  asPath: "",
+};
+
 describe("SearchComponent", () => {
   const mockUseSearch = useSearch as jest.MockedFunction<typeof useSearch>;
 
@@ -22,6 +36,7 @@ describe("SearchComponent", () => {
     mockUseSearch.mockReturnValue({
       ...baseMockState,
     });
+    (useRouter as jest.Mock).mockReturnValue(mockRouter);
   });
 
   afterEach(() => {
@@ -78,7 +93,7 @@ describe("SearchComponent", () => {
     expect(handleOpenSearch).toHaveBeenCalled();
   });
 
-  it("renders search modal correctly when open is true", async () => {
+  it(" search modal renders correctly when open is true", async () => {
     mockUseSearch.mockReturnValue({
       ...baseMockState,
       openSearch: true,

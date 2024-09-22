@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Image from "next/image";
-import styled from "@mui/material/styles/styled";
+import { styled } from "@mui/material/styles";
 
 const StyledCoinBox = styled(Box)(({ theme }) => ({
   display: "none",
