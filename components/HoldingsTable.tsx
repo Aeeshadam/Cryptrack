@@ -85,7 +85,7 @@ const HoldingsTable = () => {
                   <TableCell align="right">
                     <CoinBox>
                       <Image
-                        src={coin.image}
+                        src={coin.image || "/placeholder.svg"}
                         alt={coin.name}
                         width={isSmallScreen ? 16 : 24}
                         height={isSmallScreen ? 16 : 24}

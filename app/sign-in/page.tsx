@@ -6,15 +6,16 @@ import { StyledButton } from "@/components/StyledButton";
 import { useAuth } from "@/contexts/AuthContext";
 
 const SignInForm = () => {
-  const { signIn, error, loading, setError } = useAuth();
+  const { signIn, setError, error } = useAuth();
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    setError("");
-  }, [password, email]);
-
+    if (error) {
+      setError("");
+    }
+  }, [email, password]);
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
@@ -22,6 +23,8 @@ const SignInForm = () => {
 
     if (success) {
       router.push("/");
+    } else {
+      setError("Invalid credentials");
     }
   };
 
@@ -74,6 +77,14 @@ const SignInForm = () => {
             Do not have an account?
             <a href="/sign-up"> Sign Up</a>
           </Typography>
+          <Typography variant="body2" align="center">
+            Demo Credentials - demo@gmail.com / password: cryptrack
+          </Typography>
+          {error && (
+            <Typography variant="body2" color="error.main" align="center">
+              {error}
+            </Typography>
+          )}
         </Box>
       </Box>
     </Container>

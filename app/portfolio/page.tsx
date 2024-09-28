@@ -14,11 +14,9 @@ const Page = () => {
   if (loading) {
     return <LoadingSpinner />;
   }
-
   if (portfolioCoins.length === 0) {
     return <EmptyPortfolio />;
   }
-
   return (
     <Box>
       <PortfolioBalance />

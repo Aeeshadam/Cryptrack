@@ -12,7 +12,7 @@ const useMarketStatsData = () => {
     coin?.market_data?.market_cap_change_percentage_24h;
   const priceChange24h = coin?.market_data?.price_change_percentage_24h;
   const allTimeLow = coin?.market_data.atl?.usd;
-  const allTimeHigh = coin?.market_data.ath.usd;
+  const allTimeHigh = coin?.market_data.ath?.usd;
   const allTimeLowDate = coin?.market_data.atl_date?.usd;
   const allTimeHighDate = coin?.market_data.ath_date?.usd;
 

@@ -13,8 +13,9 @@ import { StyledButton } from "@/components/StyledButton";
 import { useAuth } from "@/contexts/AuthContext";
 
 const SignUpForm = () => {
-  const { signUp, error, loading, setError } = useAuth();
+  const { signUp, error, setError } = useAuth();
   const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [localError, setLocalError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -28,7 +29,6 @@ const SignUpForm = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const email = (event.target as any).email.value;
 
     if (password !== confirmPassword) {
       setLocalError("Passwords do not match");
@@ -72,6 +72,7 @@ const SignUpForm = () => {
           sx={{ mt: 1 }}
         >
           <TextField
+            inputProps={{ "data-testid": "name" }}
             margin="normal"
             required
             fullWidth
@@ -82,15 +83,19 @@ const SignUpForm = () => {
             onChange={(e) => setName(e.target.value)}
           />
           <TextField
+            inputProps={{ "data-testid": "email" }}
             margin="normal"
             required
             fullWidth
             type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             label="Email Address"
             name="email"
             autoComplete="email"
           />
           <TextField
+            inputProps={{ "data-testid": "password" }}
             margin="normal"
             required
             fullWidth
@@ -102,6 +107,7 @@ const SignUpForm = () => {
             autoComplete="new-password"
           />
           <TextField
+            inputProps={{ "data-testid": "confirm-password" }}
             margin="normal"
             required
             fullWidth

@@ -11,6 +11,7 @@ const EmptyPortfolio = () => {
   const { handleOpenModal } = useTransaction();
   return (
     <Stack
+      data-testid="empty-portfolio"
       marginY="4rem"
       justifyContent="center"
       alignItems="center"

@@ -27,10 +27,11 @@ const CoinDetail = () => {
   const priceChange24h = coin?.market_data?.price_change_percentage_24h;
   const rank = coin?.market_cap_rank;
   const name = coin?.name;
-  const image = coin?.image?.large;
+  const image = coin?.image?.large || coin?.image?.small;
 
   return (
     <Box
+      data-testid="coin-detail"
       sx={{
         display: "flex",
         alignItems: "center",
@@ -54,7 +55,12 @@ const CoinDetail = () => {
           justifyContent="flex-start"
           gap="6px"
         >
-          <Image src={image} alt={name} width={24} height={24} />
+          <Image
+            src={image || "/placeholder.svg"}
+            alt={name}
+            width={24}
+            height={24}
+          />
           <Typography variant="h6" fontWeight={600}>
             {name}
           </Typography>

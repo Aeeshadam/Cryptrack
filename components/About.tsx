@@ -14,6 +14,7 @@ const About = () => {
 
   return (
     <Box
+      data-testid="about"
       bgcolor="secondary.main"
       marginY="2rem"
       width="100%"

@@ -79,7 +79,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const signIn = async (email: string, password: string) => {
     setLoading(true);
-    setError("");
     try {
       const userCredential = await signInWithEmailAndPassword(
         auth,
@@ -117,10 +116,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     } finally {
     }
   };
-
-  if (loading) {
-    return <LoadingSpinner />;
-  }
 
   return (
     <AuthContext.Provider

@@ -50,6 +50,7 @@ const Chart: React.FC<ChartProps> = ({ historicData }) => {
 
   return (
     <Box
+      data-testid="chart"
       sx={{
         height: "400px",
         width: "100%",

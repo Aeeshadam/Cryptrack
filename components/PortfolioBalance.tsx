@@ -33,6 +33,7 @@ const PortfolioBalance = () => {
 
   return (
     <Box
+      data-testid="portfolio-balance"
       sx={{
         marginY: "4rem",
         display: "flex",

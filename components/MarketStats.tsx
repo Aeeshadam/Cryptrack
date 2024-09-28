@@ -15,6 +15,7 @@ const MarketStats = () => {
 
   return (
     <Box
+      data-testid="market-stats"
       bgcolor="secondary.main"
       marginY="2rem"
       sx={{ padding: { sm: "1rem", md: "2rem", xs: "1rem" } }}

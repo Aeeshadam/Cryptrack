@@ -37,7 +37,7 @@ const CoinDetailPage = ({ params }: { params: ParamsProps }) => {
   }
 
   if (error) {
-    return <Box>Error: {error}</Box>;
+    return <Box data-testid="error-message">Error: {error}</Box>;
   }
 
   return (

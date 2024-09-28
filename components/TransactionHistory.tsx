@@ -32,7 +32,7 @@ const TransactionHistory: React.FC<TransactionHistoryProps> = ({ coinId }) => {
     );
 
   return (
-    <Box>
+    <Box data-testid="transaction-history">
       <Typography variant="h5">Transaction History</Typography>
       <List
         sx={{ backgroundColor: "secondary.main", marginY: "2rem" }}

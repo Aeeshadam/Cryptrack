@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, act } from "@testing-library/react";
 import InitialsMenu from "../../components/InitialsMenu";
 import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
@@ -39,11 +39,21 @@ describe("InitialsMenu", () => {
   it("should navigate to sign-in page and log out when log out button is clicked", async () => {
     render(<InitialsMenu name="DD" />);
     const nameButton = screen.getByRole("button", { name: "DD" });
-    fireEvent.click(nameButton);
+
+    await act(async () => {
+      fireEvent.click(nameButton);
+    });
+
     const logoutButton = screen.getByRole("menuitem", { name: "Logout" });
-    fireEvent.click(logoutButton);
+
+    await act(async () => {
+      fireEvent.click(logoutButton);
+    });
+
     expect(mockLogOut).toHaveBeenCalled();
-    await new Promise((resolve) => setTimeout(resolve, 0));
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
     expect(mockPush).toHaveBeenCalledWith("/sign-in");
   });
 });
