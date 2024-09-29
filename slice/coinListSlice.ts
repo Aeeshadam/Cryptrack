@@ -1,5 +1,5 @@
-import { CoinListState, CoinListProps } from "@/types";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { CoinListProps, CoinListState } from "@/types";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchCoins = createAsyncThunk<CoinListProps[]>(
   "coins/getAllCoins",

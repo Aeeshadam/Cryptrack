@@ -1,4 +1,4 @@
-import { TableCell, TableRow, Typography, Box } from "@mui/material";
+import { Box, TableCell, TableRow, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const DesktopCell = styled(TableCell)(({ theme }) => ({

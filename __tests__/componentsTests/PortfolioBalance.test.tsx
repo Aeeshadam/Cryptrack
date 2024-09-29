@@ -1,8 +1,10 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import PortfolioBalance from "../../components/PortfolioBalance";
+
 import { usePortfolio } from "@/contexts/PortfolioContext";
 import { useTransaction } from "@/contexts/TransactionContext";
+import { fireEvent, render, screen } from "@testing-library/react";
+
+import PortfolioBalance from "../../components/PortfolioBalance";
 
 jest.mock("@/contexts/PortfolioContext", () => ({
   usePortfolio: jest.fn(),

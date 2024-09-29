@@ -1,6 +1,7 @@
 import React from "react";
-import { screen, render } from "@testing-library/react";
+
 import ChipButton from "@/components/ChipButton";
+import { render, screen } from "@testing-library/react";
 
 describe("ChipButton Component", () => {
   it("renders correctly without detailPage prop", () => {

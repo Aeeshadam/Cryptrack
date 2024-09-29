@@ -1,16 +1,16 @@
+import Image from "next/image";
 import React from "react";
 import { useSelector } from "react-redux";
-import { useTheme, useMediaQuery } from "@mui/material";
-import { AppState } from "@/store/store";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Image from "next/image";
-import ChipButton from "./ChipButton";
-import { formatCurrency } from "@/utils/utils";
-import { StyledButton } from "./StyledButton";
-import AddIcon from "@mui/icons-material/Add";
-import { useTransaction } from "@/contexts/TransactionContext";
+
 import { useAuth } from "@/contexts/AuthContext";
+import { useTransaction } from "@/contexts/TransactionContext";
+import { AppState } from "@/store/store";
+import { formatCurrency } from "@/utils/utils";
+import AddIcon from "@mui/icons-material/Add";
+import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
+
+import ChipButton from "./ChipButton";
+import { StyledButton } from "./StyledButton";
 
 const CoinDetail = () => {
   const { user } = useAuth();

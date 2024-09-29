@@ -1,39 +1,42 @@
 "use client";
-import React from "react";
-import { useMediaQuery, useTheme } from "@mui/material";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableHead from "@mui/material/TableHead";
-import TableContainer from "@mui/material/TableContainer";
-import { useRouter } from "next/navigation";
-import ChipButton from "./ChipButton";
 import Image from "next/image";
-import Paper from "@mui/material/Paper";
-import { Typography } from "@mui/material";
-import TableRow from "@mui/material/TableRow";
-import { CoinListProps } from "../types/index";
+import { useRouter } from "next/navigation";
+import React from "react";
 import { useSelector } from "react-redux";
-import { AppState } from "../store/store";
-import { formatCurrency } from "@/utils/utils";
-import { PortfolioCoin } from "@/types/index";
+
 import { usePortfolio } from "@/contexts/PortfolioContext";
 import { useTransaction } from "@/contexts/TransactionContext";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-
 import {
+  clearIconStyles,
+  CoinBox,
   DesktopCell,
   IconContainer,
   iconStyles,
-  clearIconStyles,
+  StyledSubtitle,
   StyledTableRow,
   tableContainerStyles,
-  StyledSubtitle,
-  CoinBox,
 } from "@/styles/TableStyles";
-
-import EditIcon from "@mui/icons-material/Edit";
+import { PortfolioCoin } from "@/types/index";
+import { formatCurrency } from "@/utils/utils";
 import ClearIcon from "@mui/icons-material/Clear";
+import EditIcon from "@mui/icons-material/Edit";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+
+import { AppState } from "../store/store";
+import { CoinListProps } from "../types/index";
+import ChipButton from "./ChipButton";
 
 const HoldingsTable = () => {
   const router = useRouter();

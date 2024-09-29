@@ -1,8 +1,9 @@
+import { useRouter } from "next/navigation";
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+
 import CryptoTable from "@/components/CryptoTable";
 import { useCoinsData } from "@/hooks/useCoinsData";
-import { useRouter } from "next/navigation";
+import { fireEvent, render, screen } from "@testing-library/react";
 
 jest.mock("@/hooks/useCoinsData");
 jest.mock("next/navigation", () => ({

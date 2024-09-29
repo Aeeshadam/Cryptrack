@@ -1,9 +1,10 @@
+import fetchMock from "jest-fetch-mock";
 import React from "react";
-import { screen, waitFor, act } from "@testing-library/react";
-import { renderWithRedux } from "@/utils/test-util";
+
 import CoinDetailPage from "@/app/coin/[slug]/page";
 import { useAuth } from "@/contexts/AuthContext";
-import fetchMock from "jest-fetch-mock";
+import { renderWithRedux } from "@/utils/test-util";
+import { act, screen, waitFor } from "@testing-library/react";
 
 jest.mock("@/contexts/AuthContext", () => ({
   useAuth: jest.fn(),

@@ -1,15 +1,16 @@
 import React, { ReactNode } from "react";
-import { render } from "@testing-library/react";
-import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
-import { AppState } from "@/store/store";
-import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+
 import { useTransaction } from "@/contexts/TransactionContext";
-import paginationReducer from "@/slice/paginationSlice";
-import coinListReducer from "@/slice/coinListSlice";
 import coinDetailsReducer from "@/slice/coinDetailsSlice";
-import portfolioReducer from "@/slice/portfolioSlice";
+import coinListReducer from "@/slice/coinListSlice";
 import historicDataReducer from "@/slice/historicDataSlice";
+import paginationReducer from "@/slice/paginationSlice";
+import portfolioReducer from "@/slice/portfolioSlice";
+import { AppState } from "@/store/store";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { configureStore } from "@reduxjs/toolkit";
+import { render } from "@testing-library/react";
 
 const defaultState: AppState = {
   coinList: {

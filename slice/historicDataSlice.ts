@@ -1,5 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { HistoricDataProps, HistoricDataState } from "@/types";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchHistoricData = createAsyncThunk<HistoricDataProps, string>(
   "historicData/fetchHistoricData",

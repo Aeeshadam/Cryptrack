@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { PortfolioCoin, PortfolioState, Transaction } from "@/types";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: PortfolioState = {
   coins: [],

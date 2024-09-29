@@ -1,7 +1,8 @@
 import React from "react";
-import { screen, render } from "@testing-library/react";
+
 import MarketStats from "@/components/MarketStats";
 import useMarketStatsData from "@/hooks/useMarketStatsData";
+import { render, screen } from "@testing-library/react";
 
 jest.mock("@/hooks/useMarketStatsData");
 

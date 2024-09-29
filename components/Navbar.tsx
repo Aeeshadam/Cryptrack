@@ -1,14 +1,16 @@
 "use client";
-import React from "react";
-import Box from "@mui/material/Box";
-import Logo from "./Logo";
-import SearchComponent from "./SearchComponent";
-import { StyledAppBar, StyledToolbar } from "../styles/NavbarStyles";
-import { StyledButton } from "./StyledButton";
 import { useRouter } from "next/navigation";
+import React from "react";
+
 import { useAuth } from "@/contexts/AuthContext";
 import { getInitials } from "@/utils/utils";
+import Box from "@mui/material/Box";
+
+import { StyledAppBar, StyledToolbar } from "../styles/NavbarStyles";
 import InitialsMenu from "./InitialsMenu";
+import Logo from "./Logo";
+import SearchComponent from "./SearchComponent";
+import { StyledButton } from "./StyledButton";
 
 export default function Navbar() {
   const { user, displayName } = useAuth();

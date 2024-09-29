@@ -1,10 +1,10 @@
 import React from "react";
-import { screen, fireEvent } from "@testing-library/react";
+
 import CoinDetail from "@/components/CoinDetail";
-import { renderWithRedux } from "@/utils/test-util";
-import { AppState } from "@/store/store";
 import { useAuth } from "@/contexts/AuthContext";
-import { mockUseTransaction } from "@/utils/test-util";
+import { AppState } from "@/store/store";
+import { mockUseTransaction, renderWithRedux } from "@/utils/test-util";
+import { fireEvent, screen } from "@testing-library/react";
 
 const baseCoinDetail = {
   coin: {

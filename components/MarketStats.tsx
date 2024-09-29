@@ -1,12 +1,18 @@
 import React from "react";
-import { Grid, Stack, Typography } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import Tooltip from "@mui/material/Tooltip";
-import Box from "@mui/material/Box";
-import ChipButton from "./ChipButton";
-import { formatCurrency } from "@/utils/utils";
+
 import useMarketStatsData from "@/hooks/useMarketStatsData";
+import { formatCurrency } from "@/utils/utils";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import {
+  Box,
+  Grid,
+  IconButton,
+  Stack,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+
+import ChipButton from "./ChipButton";
 
 const MarketStats = () => {
   const marketData = useMarketStatsData();

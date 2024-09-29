@@ -1,11 +1,12 @@
-import React from "react";
-import { screen, fireEvent, waitFor } from "@testing-library/react";
-import HoldingsTable from "@/components/HoldingsTable";
 import { useRouter } from "next/navigation";
-import { useTransaction } from "@/contexts/TransactionContext";
+import React from "react";
+
+import HoldingsTable from "@/components/HoldingsTable";
 import { usePortfolio } from "@/contexts/PortfolioContext";
-import { renderWithRedux } from "@/utils/test-util";
+import { useTransaction } from "@/contexts/TransactionContext";
 import { CoinListState } from "@/types";
+import { renderWithRedux } from "@/utils/test-util";
+import { fireEvent, screen, waitFor } from "@testing-library/react";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),

@@ -1,8 +1,8 @@
+import { AppState } from "@/store/store";
 import React from "react";
 import { useSelector } from "react-redux";
-import { AppState } from "@/store/store";
-import { Stack, Typography } from "@mui/material";
-import Box from "@mui/material/Box";
+
+import { Box, Stack, Typography } from "@mui/material";
 
 const About = () => {
   const { coin } = useSelector((state: AppState) => state.coinDetails);

@@ -1,9 +1,9 @@
 import React from "react";
-import Button from "@mui/material/Button";
+
+import { formatPercentage } from "@/utils/utils";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Typography } from "@mui/material";
-import { formatPercentage } from "@/utils/utils";
+import { Button, Typography } from "@mui/material";
 
 const ChipButton = ({
   change,

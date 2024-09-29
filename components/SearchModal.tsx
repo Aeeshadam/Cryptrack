@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import SearchComponent from "./SearchComponent";
-import SearchResult from "./SearchResult";
+
 import { useSearch } from "@/contexts/SearchContext";
 import { style } from "@/styles/ModalStyles";
+import { Box, Modal } from "@mui/material";
+
+import SearchComponent from "./SearchComponent";
+import SearchResult from "./SearchResult";
 
 export default function SearchModal() {
   const { openSearch, setOpenSearch } = useSearch();

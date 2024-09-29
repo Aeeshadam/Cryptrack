@@ -1,7 +1,8 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import { usePortfolio } from "@/contexts/PortfolioContext";
+
 import Page from "@/app/portfolio/page";
+import { usePortfolio } from "@/contexts/PortfolioContext";
+import { render, screen } from "@testing-library/react";
 
 jest.mock("@/components/PortfolioBalance", () => () => (
   <div data-testid="portfolio-balance">PortfolioBalance</div>

@@ -1,12 +1,15 @@
-import * as React from "react";
-import { useRouter } from "next/navigation";
-import ListSubheader from "@mui/material/ListSubheader";
-import List from "@mui/material/List";
 import Image from "next/image";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
+import { useRouter } from "next/navigation";
+import React from "react";
+
 import { useSearch } from "@/contexts/SearchContext";
+import {
+  List,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  ListSubheader,
+} from "@mui/material";
 
 export default function SearchResult() {
   const { filteredCoins, setOpenSearch } = useSearch();

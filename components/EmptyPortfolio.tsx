@@ -1,11 +1,10 @@
 "use client";
-import React from "react";
 import Image from "next/image";
-import Stack from "@mui/material/Stack";
-import { Box } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import { StyledButton } from "./StyledButton";
+
 import { useTransaction } from "@/contexts/TransactionContext";
+import { Box, Stack, Typography } from "@mui/material";
+
+import { StyledButton } from "./StyledButton";
 
 const EmptyPortfolio = () => {
   const { handleOpenModal } = useTransaction();

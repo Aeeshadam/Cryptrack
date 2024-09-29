@@ -1,18 +1,19 @@
 "use client";
+import React from "react";
+import { useSelector } from "react-redux";
+
+import { AppState } from "@/store/store";
+import { formatCurrency } from "@/utils/utils";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import {
   Box,
-  Typography,
   List,
   ListItem,
   ListItemAvatar,
   Stack,
+  Typography,
 } from "@mui/material";
-import React, { useMemo } from "react";
-import { useSelector } from "react-redux";
-import { AppState } from "@/store/store";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { formatCurrency } from "@/utils/utils";
 
 interface TransactionHistoryProps {
   coinId: string;

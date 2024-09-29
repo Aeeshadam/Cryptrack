@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
+
 import { AppState } from "../store/store";
 
 export const useCoinsData = () => {

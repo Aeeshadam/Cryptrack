@@ -1,27 +1,31 @@
-import React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { useRouter } from "next/navigation";
-import ChipButton from "./ChipButton";
 import Image from "next/image";
-import { CoinListProps } from "../types/index";
-import { useCoinsData } from "@/hooks/useCoinsData";
-import { formatCurrency } from "@/utils/utils";
-import LoadingSpinner from "./LoadingSpinner";
-import { useMediaQuery, useTheme } from "@mui/material";
+import { useRouter } from "next/navigation";
+import React from "react";
 
+import { useCoinsData } from "@/hooks/useCoinsData";
 import {
+  CoinBox,
   DesktopCell,
+  StyledSubtitle,
   StyledTableRow,
   tableContainerStyles,
-  StyledSubtitle,
-  CoinBox,
 } from "@/styles/TableStyles";
+import { formatCurrency } from "@/utils/utils";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+
+import { CoinListProps } from "../types/index";
+import ChipButton from "./ChipButton";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function CryptoTable() {
   const theme = useTheme();

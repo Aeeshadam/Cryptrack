@@ -1,9 +1,9 @@
 import React from "react";
-import { Avatar, Typography } from "@mui/material";
-import Box from "@mui/material/Box";
-import TwitterIcon from "@mui/icons-material/Twitter";
+
 import InstagramIcon from "@mui/icons-material/Instagram";
+import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
+import { Avatar, Box, Typography } from "@mui/material";
 
 const Footer = () => {
   return (

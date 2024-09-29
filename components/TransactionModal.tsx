@@ -1,19 +1,24 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
-import MenuItem from "@mui/material/MenuItem";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Typography from "@mui/material/Typography";
-import ToggleButton from "@mui/material/ToggleButton";
-import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import TextField from "@mui/material/TextField";
-import { StyledButton } from "./StyledButton";
-import { style } from "@/styles/ModalStyles";
+import React from "react";
+
 import { usePortfolio } from "@/contexts/PortfolioContext";
 import { useTransaction } from "@/contexts/TransactionContext";
-import { FormControl, Select } from "@mui/material";
+import { style } from "@/styles/ModalStyles";
+import {
+  Box,
+  FormControl,
+  MenuItem,
+  Modal,
+  Select,
+  TextField,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+} from "@mui/material";
+
+import { StyledButton } from "./StyledButton";
 
 const TransactionModal = () => {
   const {

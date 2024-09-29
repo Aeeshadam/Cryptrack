@@ -1,13 +1,14 @@
-import db from "./firebase";
 import {
-  getDocs,
   collection,
-  doc,
-  updateDoc,
-  setDoc,
   deleteDoc,
+  doc,
+  getDocs,
+  setDoc,
+  updateDoc,
 } from "firebase/firestore";
+
 import { PortfolioCoin } from "../types";
+import db from "./firebase";
 
 export const addCoinToPortfolio = async (
   userId: string,

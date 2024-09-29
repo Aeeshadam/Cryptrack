@@ -1,9 +1,10 @@
-import { combineReducers } from "@reduxjs/toolkit";
-import coinListReducer from "../slice/coinListSlice";
-import paginationReducer from "@/slice/paginationSlice";
 import coinDetailsReducer from "@/slice/coinDetailsSlice";
-import portfolioReducer from "@/slice/portfolioSlice";
 import historicDataReducer from "@/slice/historicDataSlice";
+import paginationReducer from "@/slice/paginationSlice";
+import portfolioReducer from "@/slice/portfolioSlice";
+import { combineReducers } from "@reduxjs/toolkit";
+
+import coinListReducer from "../slice/coinListSlice";
 
 const rootReducer = combineReducers({
   coinList: coinListReducer,

@@ -1,6 +1,7 @@
 "use client";
 
 import { Arbutus, Montserrat } from "next/font/google";
+
 import { createTheme } from "@mui/material/styles";
 
 const arbutus = Arbutus({

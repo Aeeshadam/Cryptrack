@@ -1,19 +1,25 @@
 "use client";
 import React, { useState } from "react";
-import Card from "@mui/material/Card";
-import { useMediaQuery, useTheme, IconButton } from "@mui/material";
-import { Box } from "@mui/material";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import { SummaryContentContainer } from "../styles/SummaryCardStyles";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import ChipButton from "./ChipButton";
-import { StyledButton } from "./StyledButton";
-import AddIcon from "@mui/icons-material/Add";
-import { formatCurrency } from "@/utils/utils";
+
 import { usePortfolio } from "@/contexts/PortfolioContext";
 import { useTransaction } from "@/contexts/TransactionContext";
+import { formatCurrency } from "@/utils/utils";
+import AddIcon from "@mui/icons-material/Add";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import {
+  Box,
+  Card,
+  CardContent,
+  IconButton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+
+import { SummaryContentContainer } from "../styles/SummaryCardStyles";
+import ChipButton from "./ChipButton";
+import { StyledButton } from "./StyledButton";
 
 const PortfolioBalance = () => {
   const [isBalanceVisible, setIsBalanceVisible] = useState(true);

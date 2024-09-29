@@ -1,7 +1,8 @@
 import React from "react";
-import { screen, render } from "@testing-library/react";
+
 import SummaryCard from "@/components/SummaryCard";
 import { useSummaryData } from "@/hooks/useSummaryData";
+import { render, screen } from "@testing-library/react";
 
 jest.mock("@/hooks/useSummaryData");
 

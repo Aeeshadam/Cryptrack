@@ -1,11 +1,12 @@
+import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from "chart.js";
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
-import { PortfolioCoin } from "@/types";
 import { useSelector } from "react-redux";
+
 import { AppState } from "@/store/store";
-import { Box } from "@mui/material";
+import { PortfolioCoin } from "@/types";
 import { generateRandomColor } from "@/utils/utils";
+import { Box } from "@mui/material";
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 

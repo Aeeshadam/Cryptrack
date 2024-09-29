@@ -1,8 +1,10 @@
-import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
-import Hero from "../../components/Hero";
-import { useAuth } from "@/contexts/AuthContext";
 import { useRouter } from "next/navigation";
+import React from "react";
+
+import { useAuth } from "@/contexts/AuthContext";
+import { fireEvent, render, screen } from "@testing-library/react";
+
+import Hero from "../../components/Hero";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),

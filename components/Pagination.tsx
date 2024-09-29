@@ -1,10 +1,11 @@
 "use client";
 import * as React from "react";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
 import { useDispatch, useSelector } from "react-redux";
-import { AppState, AppDispatch } from "../store/store";
+
+import { Pagination, Stack } from "@mui/material";
+
 import { setCurrentPage } from "../slice/paginationSlice";
+import { AppDispatch, AppState } from "../store/store";
 
 export default function PaginationRounded() {
   const dispatch = useDispatch<AppDispatch>();

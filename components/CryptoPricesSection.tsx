@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import Box from "@mui/material/Box";
-import { Typography } from "@mui/material";
-import SummaryCard from "./SummaryCard";
+
 import CryptoTable from "@/components/CryptoTable";
-import Pagination from "@/components/Pagination";
+import { Box, Pagination, Typography } from "@mui/material";
+
+import SummaryCard from "./SummaryCard";
 
 const CryptoPricesSection: React.FC = () => {
   return (
