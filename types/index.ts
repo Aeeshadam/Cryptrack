@@ -54,7 +54,10 @@ export interface SearchContextProps {
   handleOpenSearch: () => void;
 }
 
-export type TransactionType = "buy" | "sell";
+export enum TransactionType {
+  Buy = "buy",
+  Sell = "sell",
+}
 export interface TransactionContextProps {
   openModal: boolean;
   quantity: number;

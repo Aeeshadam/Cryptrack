@@ -15,7 +15,7 @@ export const TransactionProvider = ({ children }: { children: ReactNode }) => {
   const [pricePerCoin, setPricePerCoin] = useState(0);
   const [selectedCoin, setSelectedCoin] = useState<string | null>(null);
   const [transactionType, setTransactionType] =
-    useState<TransactionType | null>("buy");
+    useState<TransactionType | null>(TransactionType.Buy);
   const coins = useSelector((state: AppState) => state.coinList.coins);
 
   useEffect(() => {
@@ -40,7 +40,10 @@ export const TransactionProvider = ({ children }: { children: ReactNode }) => {
     event: React.MouseEvent<HTMLElement>,
     newTransactionType: string | null
   ) => {
-    if (newTransactionType === "buy" || newTransactionType === "sell") {
+    if (
+      newTransactionType === TransactionType.Buy ||
+      newTransactionType === TransactionType.Sell
+    ) {
       setTransactionType(newTransactionType);
     }
   };
