@@ -1,13 +1,13 @@
 import React from "react";
 
+import { Card, CardContent, Typography } from "@mui/material";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import { useSummaryData } from "@/hooks/useSummaryData";
-import { Card, CardContent, Typography } from "@mui/material";
 
 import {
   SummaryCardsContainer,
   SummaryContentContainer,
-} from "../styles/SummaryCardStyles";
+} from "@/styles/SummaryCardStyles";
 
 export default function SummaryCard() {
   const { cardsData, loading, error } = useSummaryData();

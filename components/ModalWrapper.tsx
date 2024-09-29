@@ -3,13 +3,12 @@
 import React, { ReactNode, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
-import SearchModal from "@/components/SearchModal";
 import { fetchCoins } from "@/slice/coinListSlice";
 import { AppDispatch } from "@/store/store";
-
 import { useSearch } from "../contexts/SearchContext";
 import { useTransaction } from "../contexts/TransactionContext";
 import TransactionModal from "./TransactionModal";
+import SearchModal from "@/components/SearchModal";
 
 interface ModalWrapperProps {
   children: ReactNode;

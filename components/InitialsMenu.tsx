@@ -1,8 +1,7 @@
+import React from "react";
 import { useRouter } from "next/navigation";
-import * as React from "react";
-
-import { useAuth } from "@/contexts/AuthContext";
 import { Box, Button, Menu, MenuItem } from "@mui/material";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function InitialsMenu({ name }: { name: string }) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);

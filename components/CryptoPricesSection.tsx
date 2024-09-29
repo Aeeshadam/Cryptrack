@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 
-import CryptoTable from "@/components/CryptoTable";
 import { Box, Pagination, Typography } from "@mui/material";
+import CryptoTable from "@/components/CryptoTable";
 
 import SummaryCard from "./SummaryCard";
 

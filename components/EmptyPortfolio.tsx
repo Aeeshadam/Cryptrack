@@ -1,8 +1,9 @@
 "use client";
+import React from "react";
 import Image from "next/image";
 
-import { useTransaction } from "@/contexts/TransactionContext";
 import { Box, Stack, Typography } from "@mui/material";
+import { useTransaction } from "@/contexts/TransactionContext";
 
 import { StyledButton } from "./StyledButton";
 

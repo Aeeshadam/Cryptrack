@@ -1,16 +1,16 @@
 import React from "react";
 
+import Box from "@mui/material/Box";
+import SearchIcon from "@mui/icons-material/Search";
 import { useSearch } from "@/contexts/SearchContext";
 import { SearchComponentProps } from "@/types";
-import SearchIcon from "@mui/icons-material/Search";
-import Box from "@mui/material/Box";
 
 import {
   MobileSearchIconWrapper,
   Search,
   SearchIconWrapper,
   StyledInputBase,
-} from "../styles/SearchComponentStyles";
+} from "@/styles/SearchComponentStyles";
 
 const SearchComponent = ({
   mobileVersion = true,

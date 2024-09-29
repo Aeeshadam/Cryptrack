@@ -1,9 +1,9 @@
 import React from "react";
 
+import {  screen } from "@testing-library/react";
 import TransactionHistory from "@/components/TransactionHistory";
 import { AppState } from "@/store/store";
 import { renderWithRedux } from "@/utils/test-util";
-import { fireEvent, screen } from "@testing-library/react";
 
 const basePortfolioCoins = {
   coins: [

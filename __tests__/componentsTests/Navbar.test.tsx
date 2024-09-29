@@ -1,9 +1,9 @@
-import { useRouter } from "next/navigation";
 import React from "react";
+import { useRouter } from "next/navigation";
 
+import { fireEvent, render, screen } from "@testing-library/react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useSearch } from "@/contexts/SearchContext";
-import { fireEvent, render, screen } from "@testing-library/react";
 
 import Navbar from "../../components/Navbar";
 

@@ -1,8 +1,5 @@
 import React from "react";
 
-import useMarketStatsData from "@/hooks/useMarketStatsData";
-import { formatCurrency } from "@/utils/utils";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import {
   Box,
   Grid,
@@ -11,7 +8,10 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
+import useMarketStatsData from "@/hooks/useMarketStatsData";
+import { formatCurrency } from "@/utils/utils";
 import ChipButton from "./ChipButton";
 
 const MarketStats = () => {

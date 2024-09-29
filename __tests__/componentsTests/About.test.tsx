@@ -1,9 +1,9 @@
 import React from "react";
 
+import { screen } from "@testing-library/react";
 import About from "@/components/About";
 import { AppState } from "@/store/store";
 import { renderWithRedux } from "@/utils/test-util";
-import { screen } from "@testing-library/react";
 
 describe("About Component", () => {
   it("renders correctly with market less than 10", () => {

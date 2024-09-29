@@ -1,10 +1,11 @@
 "use client";
-import { useRouter } from "next/navigation";
 import React from "react";
+import { useRouter } from "next/navigation";
+
+import Box from "@mui/material/Box";
 
 import { useAuth } from "@/contexts/AuthContext";
 import { getInitials } from "@/utils/utils";
-import Box from "@mui/material/Box";
 
 import { StyledAppBar, StyledToolbar } from "../styles/NavbarStyles";
 import InitialsMenu from "./InitialsMenu";

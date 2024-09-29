@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
 
+import { Box, Modal } from "@mui/material";
+
 import { useSearch } from "@/contexts/SearchContext";
 import { style } from "@/styles/ModalStyles";
-import { Box, Modal } from "@mui/material";
 
 import SearchComponent from "./SearchComponent";
 import SearchResult from "./SearchResult";

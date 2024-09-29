@@ -1,9 +1,9 @@
-import { useRouter } from "next/navigation";
 import React from "react";
+import { useRouter } from "next/navigation";
 
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import SignInForm from "@/app/sign-in/page";
 import { useAuth } from "@/contexts/AuthContext";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),

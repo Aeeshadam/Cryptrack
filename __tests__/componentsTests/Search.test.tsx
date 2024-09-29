@@ -1,10 +1,10 @@
-import { useRouter } from "next/navigation";
 import React from "react";
+import { useRouter } from "next/navigation";
 
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import SearchComponent from "@/components/SearchComponent";
 import SearchModal from "@/components/SearchModal";
 import { useSearch } from "@/contexts/SearchContext";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),

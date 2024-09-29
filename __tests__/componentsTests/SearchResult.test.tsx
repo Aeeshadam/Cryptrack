@@ -1,8 +1,8 @@
-import { useRouter } from "next/navigation";
 import React from "react";
+import { useRouter } from "next/navigation";
 
-import { useSearch } from "@/contexts/SearchContext";
 import { fireEvent, render, screen } from "@testing-library/react";
+import { useSearch } from "@/contexts/SearchContext";
 
 import SearchResult from "../../components/SearchResult";
 

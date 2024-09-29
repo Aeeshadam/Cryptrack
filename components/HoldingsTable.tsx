@@ -1,8 +1,24 @@
 "use client";
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React from "react";
 import { useSelector } from "react-redux";
+
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
+import EditIcon from "@mui/icons-material/Edit";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 import { usePortfolio } from "@/contexts/PortfolioContext";
 import { useTransaction } from "@/contexts/TransactionContext";
@@ -18,22 +34,6 @@ import {
 } from "@/styles/TableStyles";
 import { PortfolioCoin } from "@/types/index";
 import { formatCurrency } from "@/utils/utils";
-import ClearIcon from "@mui/icons-material/Clear";
-import EditIcon from "@mui/icons-material/Edit";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-
 import { AppState } from "../store/store";
 import { CoinListProps } from "../types/index";
 import ChipButton from "./ChipButton";

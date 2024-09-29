@@ -1,10 +1,11 @@
-import fetchMock from "jest-fetch-mock";
 import React from "react";
+import fetchMock from "jest-fetch-mock";
 
+import { act, screen, waitFor } from "@testing-library/react";
 import CoinDetailPage from "@/app/coin/[slug]/page";
 import { useAuth } from "@/contexts/AuthContext";
 import { renderWithRedux } from "@/utils/test-util";
-import { act, screen, waitFor } from "@testing-library/react";
+import { TransactionType } from "@/types";
 
 jest.mock("@/contexts/AuthContext", () => ({
   useAuth: jest.fn(),
@@ -162,7 +163,7 @@ describe("CoinDetailPage", () => {
                   {
                     quantity: 1,
                     price: 50000,
-                    type: "buy",
+                    type: TransactionType.Buy,
                     timestamp: 1630000000000,
                   },
                 ],

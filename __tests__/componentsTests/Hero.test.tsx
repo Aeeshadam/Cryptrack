@@ -1,8 +1,8 @@
-import { useRouter } from "next/navigation";
 import React from "react";
+import { useRouter } from "next/navigation";
 
-import { useAuth } from "@/contexts/AuthContext";
 import { fireEvent, render, screen } from "@testing-library/react";
+import { useAuth } from "@/contexts/AuthContext";
 
 import Hero from "../../components/Hero";
 

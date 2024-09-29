@@ -1,11 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
 
-import { usePortfolio } from "@/contexts/PortfolioContext";
-import { useTransaction } from "@/contexts/TransactionContext";
-import { style } from "@/styles/ModalStyles";
 import {
   Box,
   FormControl,
@@ -17,6 +14,9 @@ import {
   ToggleButtonGroup,
   Typography,
 } from "@mui/material";
+import { usePortfolio } from "@/contexts/PortfolioContext";
+import { useTransaction } from "@/contexts/TransactionContext";
+import { style } from "@/styles/ModalStyles";
 
 import { StyledButton } from "./StyledButton";
 

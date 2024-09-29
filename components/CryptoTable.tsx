@@ -1,16 +1,6 @@
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React from "react";
-
-import { useCoinsData } from "@/hooks/useCoinsData";
-import {
-  CoinBox,
-  DesktopCell,
-  StyledSubtitle,
-  StyledTableRow,
-  tableContainerStyles,
-} from "@/styles/TableStyles";
-import { formatCurrency } from "@/utils/utils";
 import {
   Paper,
   Table,
@@ -23,6 +13,15 @@ import {
   useTheme,
 } from "@mui/material";
 
+import { useCoinsData } from "@/hooks/useCoinsData";
+import {
+  CoinBox,
+  DesktopCell,
+  StyledSubtitle,
+  StyledTableRow,
+  tableContainerStyles,
+} from "@/styles/TableStyles";
+import { formatCurrency } from "@/utils/utils";
 import { CoinListProps } from "../types/index";
 import ChipButton from "./ChipButton";
 import LoadingSpinner from "./LoadingSpinner";

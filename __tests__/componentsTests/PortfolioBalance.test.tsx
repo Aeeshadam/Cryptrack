@@ -1,8 +1,8 @@
 import React from "react";
 
+import { fireEvent, render, screen } from "@testing-library/react";
 import { usePortfolio } from "@/contexts/PortfolioContext";
 import { useTransaction } from "@/contexts/TransactionContext";
-import { fireEvent, render, screen } from "@testing-library/react";
 
 import PortfolioBalance from "../../components/PortfolioBalance";
 

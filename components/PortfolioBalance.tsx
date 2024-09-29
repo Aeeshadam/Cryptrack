@@ -1,12 +1,6 @@
 "use client";
 import React, { useState } from "react";
 
-import { usePortfolio } from "@/contexts/PortfolioContext";
-import { useTransaction } from "@/contexts/TransactionContext";
-import { formatCurrency } from "@/utils/utils";
-import AddIcon from "@mui/icons-material/Add";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
   Box,
   Card,
@@ -16,7 +10,13 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
+import { usePortfolio } from "@/contexts/PortfolioContext";
+import { useTransaction } from "@/contexts/TransactionContext";
+import { formatCurrency } from "@/utils/utils";
 import { SummaryContentContainer } from "../styles/SummaryCardStyles";
 import ChipButton from "./ChipButton";
 import { StyledButton } from "./StyledButton";
