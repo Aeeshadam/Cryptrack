@@ -42,7 +42,7 @@ const Hero = () => {
         </HeroContent>
         <HeroImageContainer>
           <Image
-            src="/hero.png"
+            src="/Hero.png"
             alt="hero"
             width={400}
             height={400}

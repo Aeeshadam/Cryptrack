@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 
-import { Box, Pagination, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CryptoTable from "@/components/CryptoTable";
+import Pagination from "@/components/Pagination";
 
 import SummaryCard from "./SummaryCard";
 

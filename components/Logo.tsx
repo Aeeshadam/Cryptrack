@@ -12,7 +12,7 @@ const Logo = () => {
   const logoWidth = isSmallScreen ? 120 : 150;
   return (
     <Link href="/">
-      <Image src="/logo.svg" alt="Logo" width={logoWidth} height={50} />
+      <Image src="/Logo.svg" alt="Logo" width={logoWidth} height={50} />
     </Link>
   );
 };
