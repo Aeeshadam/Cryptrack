@@ -146,11 +146,16 @@ export const PortfolioProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const handleRemoveCoin = (coinId: string) => {
     if (!user) return;
-    try {
-      removeCoinFromPortfolio(user.uid, coinId);
-      dispatch(removeCoin(coinId));
-    } catch (error) {
-      console.error("Error removing coin from portfolio:", error);
+    const confirm = window.confirm("Are you sure you want to remove this coin from your portfolio?");
+    if (confirm) {
+      try {
+        removeCoinFromPortfolio(user.uid, coinId);
+        dispatch(removeCoin(coinId));
+      } catch (error) {
+        console.error("Error removing coin from portfolio:", error);
+      }
+    } else {
+      return;
     }
   };
 

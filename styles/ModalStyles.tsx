@@ -13,5 +13,10 @@ export const style = {
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
-  p: 4,
+p:{
+  md: 4,
+  sm: 2,
+  xs: 2,
+
+}
 };

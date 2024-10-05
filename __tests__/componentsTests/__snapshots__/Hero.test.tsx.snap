@@ -42,8 +42,8 @@ exports[`Hero should render correctly 1`] = `
           decoding="async"
           height="400"
           loading="lazy"
-          src="/_next/image?url=%2Fhero.png&w=828&q=75"
-          srcset="/_next/image?url=%2Fhero.png&w=640&q=75 1x, /_next/image?url=%2Fhero.png&w=828&q=75 2x"
+          src="/_next/image?url=%2FHero.png&w=828&q=75"
+          srcset="/_next/image?url=%2FHero.png&w=640&q=75 1x, /_next/image?url=%2FHero.png&w=828&q=75 2x"
           style="color: transparent; width: 100%; height: auto; object-fit: contain;"
           width="400"
         />

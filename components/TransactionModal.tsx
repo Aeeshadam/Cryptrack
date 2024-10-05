@@ -6,6 +6,7 @@ import Image from "next/image";
 import {
   Box,
   FormControl,
+  InputLabel,
   MenuItem,
   Modal,
   Select,
@@ -73,6 +74,7 @@ const TransactionModal = () => {
             <ToggleButton value="sell">SELL</ToggleButton>
           </ToggleButtonGroup>
           <FormControl fullWidth>
+          <InputLabel id="coin-select-label">Cryptocurrency</InputLabel>
             <Select
               fullWidth
               required
@@ -102,13 +104,13 @@ const TransactionModal = () => {
                 </MenuItem>
               ))}
             </Select>
-
+            </FormControl>
             <TextField
               fullWidth
               required
               placeholder="please enter quantity"
               label="Quantity"
-              value={quantity}
+              value={quantity || ""}
               type="number"
               onChange={(e) => setQuantity(parseFloat(e.target.value))}
               variant="outlined"
@@ -148,7 +150,7 @@ const TransactionModal = () => {
             <StyledButton fullWidth type="submit">
               Add Transaction
             </StyledButton>
-          </FormControl>
+        
         </Box>
       </Modal>
     </Box>

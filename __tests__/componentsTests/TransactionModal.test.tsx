@@ -104,16 +104,6 @@ describe("TransactionModal", () => {
     expect(mockPortfolioContext.handleAddTransaction).toHaveBeenCalled();
   });
 
-  /*  it("updates selected coin when coin is selected", async () => {
-    render(<TransactionModal />);
-    const dropdownButton = screen.getByTestId("coin-select");
-    userEvent.click(dropdownButton);
-    const bitcoinOption = await screen.findByRole("option", {
-      name: /Bitcoin/i,
-    });
-    userEvent.click(bitcoinOption);
-    expect(mockTransactionContext.setSelectedCoin).toHaveBeenCalledWith(
-      "bitcoin"
-    );
-  }); */
+  
+  
 });

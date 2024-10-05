@@ -19,9 +19,9 @@ exports[`Navbar should render correctly 1`] = `
             alt="Logo"
             data-nimg="1"
             decoding="async"
+            fetchpriority="high"
             height="50"
-            loading="lazy"
-            src="/logo.svg"
+            src="/Logo.svg"
             style="color: transparent;"
             width="150"
           />

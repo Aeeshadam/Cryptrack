@@ -68,9 +68,9 @@ const HoldingsTable = () => {
               </TableCell>
               <DesktopCell align="right">MarketCap</DesktopCell>
               <TableCell align="right">Holdings</TableCell>
-              <DesktopCell align="right">
+              <TableCell align="right">
                 <MoreVertIcon />
-              </DesktopCell>
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -120,10 +120,10 @@ const HoldingsTable = () => {
                       )}
                     </Typography>
                   </TableCell>
-                  <DesktopCell align="right">
+                  <TableCell align="right">
                     <IconContainer>
                       <EditIcon
-                        sx={iconStyles}
+                        sx={{iconStyles, display:{ sm: "none", xs:"none", md:"block" } } } 
                         onClick={(
                           event: React.MouseEvent<SVGSVGElement, MouseEvent>
                         ) => {
@@ -132,7 +132,7 @@ const HoldingsTable = () => {
                         }}
                       />
                       <ClearIcon
-                        sx={clearIconStyles}
+                    sx={clearIconStyles}
                         onClick={(
                           event: React.MouseEvent<SVGSVGElement, MouseEvent>
                         ) => {
@@ -141,7 +141,7 @@ const HoldingsTable = () => {
                         }}
                       />
                     </IconContainer>
-                  </DesktopCell>
+                  </TableCell>
                 </StyledTableRow>
               );
             })}

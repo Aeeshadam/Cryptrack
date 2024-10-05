@@ -15,6 +15,7 @@ export const IconContainer = styled("div")(({ theme }) => ({
 }));
 
 export const iconStyles = {
+  
   transition: "transform 0.2s ease-in-out",
   ":hover": {
     cursor: "pointer",
