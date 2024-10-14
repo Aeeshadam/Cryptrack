@@ -1,6 +1,6 @@
 # CrypTrack
 
-CrypTrack is a cryptocurrency tracking application that allows users to monitor real-time prices of various coins and manage their portfolio with ease. Built using Next.js, TypeScript, and Material UI, CrypTrack delivers a responsive and user-friendly interface for crypto enthusiasts. The app also includes unit and integration testing to ensure reliability and performance.
+CrypTrack is a cryptocurrency tracking application that allows users to monitor real-time prices of various coins and manage their portfolio with ease. Built using Next.js, TypeScript, and Material UI, CrypTrack delivers a responsive and user-friendly interface for crypto enthusiasts. The app also includes unit to ensure reliability and performance.
 
 ## Features
 - **Real-Time Coin Prices**: Track the latest prices of top cryptocurrencies.
